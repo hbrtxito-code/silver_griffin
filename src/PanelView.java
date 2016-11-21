@@ -1,6 +1,9 @@
 /**
  * Created by hbrtxito on 11/12/16.
  */
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -34,8 +37,14 @@ public class PanelView extends JFrame {
     JTextArea txt_comments          = new JTextArea();
 
     /** Combos **/
-    JComboBox cmb_pay               = new JComboBox();
-    JComboBox cmb_type              = new JComboBox();
+    String [] pay_field = {" CREDIT", " DEBIT" , " CASH"};
+    JComboBox cmb_pay               = new JComboBox(pay_field);
+
+    String [] type_field = {" HOUSE", " FIXED" , " FOOD" , " BARNEY", " HEBERT" , " HSIENKAI", " EXTRA"};
+    JComboBox cmb_type              = new JComboBox(type_field);
+
+    /** Combo Fields **/
+
 
     /** Buttons for panel I **/
 
@@ -58,6 +67,10 @@ public class PanelView extends JFrame {
 
     JTextArea txt_income            = new JTextArea();
     JTextArea txt_comments_2        = new JTextArea();
+
+    /** JCalendar **/
+
+    JDateChooser cal_expenses = new JDateChooser();
 
     /** Button for panel II **/
 
@@ -124,7 +137,7 @@ public class PanelView extends JFrame {
         /** Panel  EXPENSES **/
 
         /** setting Layout **/
-        panel_Expenses.setLayout(null);
+       panel_Expenses.setLayout(null);
 
         /** Set BackGround Color **/
         panel_Expenses.setBackground(Color.lightGray);
@@ -169,11 +182,17 @@ public class PanelView extends JFrame {
         panel_Expenses.add(cmb_pay);
         panel_Expenses.add(cmb_type);
 
+
+
         /** Position for all ComboBox **/
 
         cmb_pay.setBounds(20 , 330 , 100 , 30);
         cmb_type.setBounds(200 , 330 , 125 , 30);
 
+        /** JCalendar  **/
+
+        cal_expenses.setBounds(40, 50, 200, 20);
+        panel_Expenses.add(cal_expenses);
         /** Button panel I **/
 
         panel_Expenses.add(btn_submit_1);
