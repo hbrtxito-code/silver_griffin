@@ -5,6 +5,10 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.util.Date;
 import javax.swing.*;
 
 
@@ -12,36 +16,36 @@ public class PanelView extends JFrame {
 
     /** This are all 4 panels **/
 
-    JPanel panel_Expenses           = new JPanel();
-    JPanel panel_Income             = new JPanel();
-    JPanel panel_Monthly_Expenses   = new JPanel();
-    JPanel panel_Query              = new JPanel();
+    private JPanel panel_Expenses           = new JPanel();
+    private JPanel panel_Income             = new JPanel();
+    private JPanel panel_Monthly_Expenses   = new JPanel();
+    private JPanel panel_Query              = new JPanel();
 
     /** Panel I Components **/
 
     /** Labels **/
 
-    JLabel lbl_date_1               = new JLabel("DATE");
-    JLabel lbl_quantity             = new JLabel("QUANTITY");
-    JLabel lbl_product              = new JLabel("PRODUCT");
-    JLabel lbl_price                = new JLabel("PRICE");
-    JLabel lbl_payment              = new JLabel("PAYMENT");
-    JLabel lbl_category             = new JLabel("CATEGORY");
-    JLabel lbl_comments_1           = new JLabel("COMMENTS");
+    private JLabel lbl_date_1               = new JLabel("DATE");
+    private JLabel lbl_quantity             = new JLabel("QUANTITY");
+    private JLabel lbl_product              = new JLabel("PRODUCT");
+    private JLabel lbl_price                = new JLabel("PRICE");
+    private JLabel lbl_payment              = new JLabel("PAYMENT");
+    private JLabel lbl_category             = new JLabel("CATEGORY");
+    private JLabel lbl_comments_1           = new JLabel("COMMENTS");
 
     /** Text Area **/
 
-    JTextArea txt_quantity          = new JTextArea();
-    JTextArea txt_product           = new JTextArea();
-    JTextArea txt_price             = new JTextArea();
-    JTextArea txt_comments          = new JTextArea();
+    private JTextArea txt_quantity          = new JTextArea();
+    private JTextArea txt_product           = new JTextArea();
+    private JTextArea txt_price             = new JTextArea();
+    private JTextArea txt_comments          = new JTextArea();
 
     /** Combos **/
-    String [] pay_field = {" CREDIT", " DEBIT" , " CASH"};
-    JComboBox cmb_pay               = new JComboBox(pay_field);
+    private String [] pay_field = {" CREDIT", " DEBIT" , " CASH"};
+    private JComboBox cmb_pay               = new JComboBox(pay_field);
 
-    String [] type_field = {" HOUSE", " FIXED" , " FOOD" , " BARNEY", " HEBERT" , " HSIENKAI", " EXTRA"};
-    JComboBox cmb_type              = new JComboBox(type_field);
+    private String [] type_field = {" HOUSE", " FIXED" , " FOOD" , " BARNEY", " HEBERT" , " HSIENKAI", " EXTRA"};
+    private JComboBox cmb_type              = new JComboBox(type_field);
 
     /** Combo Fields **/
 
@@ -54,80 +58,80 @@ public class PanelView extends JFrame {
 
     /** Labels **/
 
-    JLabel lbl_date_2               = new JLabel("DATE");
-    JLabel lbl_user                 = new JLabel("USER");
-    JLabel lbl_income               = new JLabel("INCOME");
-    JLabel lbl_comments_2           = new JLabel("COMMENTS");
+    private JLabel lbl_date_2               = new JLabel("DATE");
+    private JLabel lbl_user                 = new JLabel("USER");
+    private JLabel lbl_income               = new JLabel("INCOME");
+    private JLabel lbl_comments_2           = new JLabel("COMMENTS");
 
     /** Combos **/
 
-    JComboBox cmb_user              = new JComboBox();
+    private JComboBox cmb_user              = new JComboBox();
 
     /** Text Areas **/
 
-    JTextArea txt_income            = new JTextArea();
-    JTextArea txt_comments_2        = new JTextArea();
+    private JTextArea txt_income            = new JTextArea();
+    private JTextArea txt_comments_2        = new JTextArea();
 
     /** JCalendar **/
 
-    JDateChooser cal_expenses = new JDateChooser();
+    private JDateChooser cal_expenses = new JDateChooser();
 
     /** Button for panel II **/
 
-    JButton btn_submit_2            = new JButton("SUBMIT");
+    private JButton btn_submit_2            = new JButton("SUBMIT");
 
     /** Panel III Components **/
 
     /** Labels Panel III **/
 
-    JLabel lbl_date_3               = new JLabel("CALENDAR DATE");
-    JLabel lbl_from_3               = new JLabel("FROM");
-    JLabel lbl_to_3                 = new JLabel("TO");
-    JLabel lbl_hsk_3                = new JLabel("HSIENKAI");
-    JLabel lbl_hbrt_3               = new JLabel("HEBERT");
-    JLabel lbl_barney               = new JLabel("BARNEY");
-    JLabel lbl_fix_3                = new JLabel("UTILITIES");
-    JLabel lbl_house_3              = new JLabel("HOUSE");
-    JLabel lbl_extra_3              = new JLabel("EXTRA");
-    JLabel lbl_food_3               = new JLabel("FOOD");
-    JLabel lbl_total_3              = new JLabel("GRAND TOTAL");
+    private JLabel lbl_date_3               = new JLabel("CALENDAR DATE");
+    private JLabel lbl_from_3               = new JLabel("FROM");
+    private JLabel lbl_to_3                 = new JLabel("TO");
+    private JLabel lbl_hsk_3                = new JLabel("HSIENKAI");
+    private JLabel lbl_hbrt_3               = new JLabel("HEBERT");
+    private JLabel lbl_barney               = new JLabel("BARNEY");
+    private JLabel lbl_fix_3                = new JLabel("UTILITIES");
+    private JLabel lbl_house_3              = new JLabel("HOUSE");
+    private JLabel lbl_extra_3              = new JLabel("EXTRA");
+    private JLabel lbl_food_3               = new JLabel("FOOD");
+    private JLabel lbl_total_3              = new JLabel("GRAND TOTAL");
 
     /** Text Areas for Panel III **/
 
-    JTextArea txt_hsk_3             = new JTextArea();
-    JTextArea txt_hbrt_3            = new JTextArea();
-    JTextArea txt_barney_3          = new JTextArea();
-    JTextArea txt_fix_3             = new JTextArea();
-    JTextArea txt_house_3           = new JTextArea();
-    JTextArea txt_extra_3           = new JTextArea();
-    JTextArea txt_food_3            = new JTextArea();
-    JTextArea txt_grand_total       = new JTextArea();
+    private JTextArea txt_hsk_3             = new JTextArea();
+    private JTextArea txt_hbrt_3            = new JTextArea();
+    private JTextArea txt_barney_3          = new JTextArea();
+    private JTextArea txt_fix_3             = new JTextArea();
+    private JTextArea txt_house_3           = new JTextArea();
+    private JTextArea txt_extra_3           = new JTextArea();
+    private JTextArea txt_food_3            = new JTextArea();
+    private JTextArea txt_grand_total       = new JTextArea();
 
 
     /** PANEL IV Components **/
 
     /** Labels Panel IV **/
 
-    JLabel lbl_total_per_month_4   = new JLabel("TOTAL PER MONTH");
-    JLabel lbl_from_4              = new JLabel("FROM");
-    JLabel lbl_to_4                = new JLabel("TO");
-    JLabel lbl_on_4                = new JLabel("ON");
-    JLabel lbl_query_total_4       = new JLabel("TOTAL");
+    private JLabel lbl_total_per_month_4   = new JLabel("TOTAL PER MONTH");
+    private JLabel lbl_from_4              = new JLabel("FROM");
+    private JLabel lbl_to_4                = new JLabel("TO");
+    private JLabel lbl_on_4                = new JLabel("ON");
+    private JLabel lbl_query_total_4       = new JLabel("TOTAL");
 
     /** Text Areas Panel IV **/
 
-    JTextArea txt_total_per_month_4 = new JTextArea();
-    JTextArea txt_on_4              = new JTextArea();
-    JTextArea txt_query_total_4     = new JTextArea();
+    private JTextArea txt_total_per_month_4 = new JTextArea();
+    private JTextArea txt_on_4              = new JTextArea();
+    private JTextArea txt_query_total_4     = new JTextArea();
 
     /** Combo Box for Panel IV **/
 
-    JComboBox cmb_month_4           = new JComboBox();
+    private JComboBox cmb_month_4           = new JComboBox();
 
     /** Button for panel IV **/
 
-    JButton btn_get_4               = new JButton("TOTAL");
-    JButton btn_total_on_4          = new JButton("TOTAL ON");
+    private JButton btn_get_4               = new JButton("TOTAL");
+    private JButton btn_total_on_4          = new JButton("TOTAL ON");
 
 
     JTabbedPane tabbedPane = new JTabbedPane();
@@ -189,10 +193,11 @@ public class PanelView extends JFrame {
         cmb_pay.setBounds(20 , 330 , 100 , 30);
         cmb_type.setBounds(200 , 330 , 125 , 30);
 
-        /** JCalendar  **/
+        /** JCalendar JDate Chooser **/
 
-        cal_expenses.setBounds(40, 50, 200, 20);
+        cal_expenses.setBounds(120, 50, 125, 20);
         panel_Expenses.add(cal_expenses);
+
         /** Button panel I **/
 
         panel_Expenses.add(btn_submit_1);
@@ -211,6 +216,24 @@ public class PanelView extends JFrame {
         /** Set BackGround Color **/
         Color clr_2 = new Color(204, 255, 153);   // blue
         panel_Income.setBackground(clr_2);
+
+
+        /** Operations for Panel I **/
+
+        btn_submit_1.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Date date_picked_1 = cal_expenses.getDate();
+                String str_pay = DateFormat.getInstance().format(date_picked_1);
+
+                JLabel lbl_test = new JLabel("TEST");
+                panel_Expenses.add(lbl_test);
+                lbl_test.setBounds(20 , 450 , 150 , 30);
+
+                lbl_test.setText(str_pay);
+            }
+        });
 
         /** All label for panel II **/
 
