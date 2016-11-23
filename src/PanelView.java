@@ -1,12 +1,9 @@
 /**
  * Created by hbrtxito on 11/12/16.
  */
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.util.Date;
 import javax.swing.*;
@@ -14,16 +11,16 @@ import javax.swing.*;
 
 public class PanelView extends JFrame {
 
-    /** This are all 4 panels **/
+    // This are all 4 panels
 
     private JPanel panel_Expenses           = new JPanel();
     private JPanel panel_Income             = new JPanel();
     private JPanel panel_Monthly_Expenses   = new JPanel();
     private JPanel panel_Query              = new JPanel();
 
-    /** Panel I Components **/
+    // Panel I Components
 
-    /** Labels **/
+    // Labels
 
     private JLabel lbl_date_1               = new JLabel("DATE");
     private JLabel lbl_quantity             = new JLabel("QUANTITY");
@@ -33,56 +30,52 @@ public class PanelView extends JFrame {
     private JLabel lbl_category             = new JLabel("CATEGORY");
     private JLabel lbl_comments_1           = new JLabel("COMMENTS");
 
-    /** Text Area **/
+    // Text Area
 
     private JTextArea txt_quantity          = new JTextArea();
     private JTextArea txt_product           = new JTextArea();
     private JTextArea txt_price             = new JTextArea();
     private JTextArea txt_comments          = new JTextArea();
 
-    /** Combos **/
-    private String [] pay_field = {" CREDIT", " DEBIT" , " CASH"};
-    private JComboBox cmb_pay               = new JComboBox(pay_field);
+    // Combos
 
-    private String [] type_field = {" HOUSE", " FIXED" , " FOOD" , " BARNEY", " HEBERT" , " HSIENKAI", " EXTRA"};
-    private JComboBox cmb_type              = new JComboBox(type_field);
+    private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {" CREDIT", " DEBIT" , " CASH"});
 
-    /** Combo Fields **/
+    private JComboBox <String> cmb_type     = new JComboBox<>(new String[] {" HOUSE", " FIXED" , " FOOD" , " BARNEY",
+                                                                            " HEBERT" , " HSIENKAI", " EXTRA"});
+    // Buttons for panel I //
 
+    private JButton btn_submit_1            = new JButton("SUBMIT");
 
-    /** Buttons for panel I **/
+    // Panel II Components
 
-    JButton btn_submit_1            = new JButton("SUBMIT");
-
-    /**  Panel II Components **/
-
-    /** Labels **/
+    //  Labels
 
     private JLabel lbl_date_2               = new JLabel("DATE");
     private JLabel lbl_user                 = new JLabel("USER");
     private JLabel lbl_income               = new JLabel("INCOME");
     private JLabel lbl_comments_2           = new JLabel("COMMENTS");
 
-    /** Combos **/
+    //  Combos
 
     private JComboBox cmb_user              = new JComboBox();
 
-    /** Text Areas **/
+    //  Text Areas 
 
     private JTextArea txt_income            = new JTextArea();
     private JTextArea txt_comments_2        = new JTextArea();
 
-    /** JCalendar **/
+    // JCalendar 
 
     private JDateChooser cal_expenses = new JDateChooser();
 
-    /** Button for panel II **/
+    // Button for panel II 
 
     private JButton btn_submit_2            = new JButton("SUBMIT");
 
-    /** Panel III Components **/
+    // Panel III Components 
 
-    /** Labels Panel III **/
+    // Labels Panel III 
 
     private JLabel lbl_date_3               = new JLabel("CALENDAR DATE");
     private JLabel lbl_from_3               = new JLabel("FROM");
@@ -96,7 +89,7 @@ public class PanelView extends JFrame {
     private JLabel lbl_food_3               = new JLabel("FOOD");
     private JLabel lbl_total_3              = new JLabel("GRAND TOTAL");
 
-    /** Text Areas for Panel III **/
+    // Text Areas for Panel III 
 
     private JTextArea txt_hsk_3             = new JTextArea();
     private JTextArea txt_hbrt_3            = new JTextArea();
@@ -107,10 +100,9 @@ public class PanelView extends JFrame {
     private JTextArea txt_food_3            = new JTextArea();
     private JTextArea txt_grand_total       = new JTextArea();
 
+    // PANEL IV Components
 
-    /** PANEL IV Components **/
-
-    /** Labels Panel IV **/
+    // Labels Panel IV 
 
     private JLabel lbl_total_per_month_4   = new JLabel("TOTAL PER MONTH");
     private JLabel lbl_from_4              = new JLabel("FROM");
@@ -118,35 +110,35 @@ public class PanelView extends JFrame {
     private JLabel lbl_on_4                = new JLabel("ON");
     private JLabel lbl_query_total_4       = new JLabel("TOTAL");
 
-    /** Text Areas Panel IV **/
+    // Text Areas Panel IV 
 
     private JTextArea txt_total_per_month_4 = new JTextArea();
     private JTextArea txt_on_4              = new JTextArea();
     private JTextArea txt_query_total_4     = new JTextArea();
 
-    /** Combo Box for Panel IV **/
+    // Combo Box for Panel IV 
 
     private JComboBox cmb_month_4           = new JComboBox();
 
-    /** Button for panel IV **/
+    // Button for panel IV 
 
     private JButton btn_get_4               = new JButton("TOTAL");
     private JButton btn_total_on_4          = new JButton("TOTAL ON");
 
 
-    JTabbedPane tabbedPane = new JTabbedPane();
+    private JTabbedPane tabbedPane = new JTabbedPane();
 
 
     public PanelView(){
-        /** Panel  EXPENSES **/
+        // Panel  EXPENSES 
 
-        /** setting Layout **/
+        // setting Layout 
        panel_Expenses.setLayout(null);
 
-        /** Set BackGround Color **/
+        // Set BackGround Color 
         panel_Expenses.setBackground(Color.lightGray);
 
-        /** All label for panel I **/
+        // All label for panel I 
 
         panel_Expenses.add(lbl_quantity);
         panel_Expenses.add(lbl_date_1);
@@ -157,7 +149,7 @@ public class PanelView extends JFrame {
         panel_Expenses.add(lbl_comments_1);
 
 
-        /** Position of the labels **/
+        // Position of the labels 
         lbl_date_1.setBounds(20 , 10 , 300 , 30);
         lbl_product.setBounds(220 , 150 , 300 , 30);
         lbl_quantity.setBounds(20, 150, 300, 30);
@@ -167,121 +159,155 @@ public class PanelView extends JFrame {
         lbl_comments_1.setBounds(430 , 300 , 300 , 30);
 
 
-        /** All Text Areas for panel I **/
+        // All Text Areas for panel I 
 
         panel_Expenses.add(txt_quantity);
         panel_Expenses.add(txt_product);
         panel_Expenses.add(txt_price);
         panel_Expenses.add(txt_comments);
 
-        /** Position of the Text Area **/
+        // Position of the Text Area 
 
         txt_quantity.setBounds(30, 185 , 50 , 30);
         txt_product.setBounds(180, 185 , 150 , 30);
         txt_price.setBounds(410 , 185 , 100 , 30);
         txt_comments.setBounds(410 , 330 , 150 , 30);
 
-        /** All ComboBox for Panel I **/
+        // All ComboBox for Panel I 
 
         panel_Expenses.add(cmb_pay);
         panel_Expenses.add(cmb_type);
 
 
-
-        /** Position for all ComboBox **/
+        // Position for all ComboBox 
 
         cmb_pay.setBounds(20 , 330 , 100 , 30);
         cmb_type.setBounds(200 , 330 , 125 , 30);
 
-        /** JCalendar JDate Chooser **/
+        // JCalendar JDate Chooser 
 
         cal_expenses.setBounds(120, 50, 125, 20);
         panel_Expenses.add(cal_expenses);
 
-        /** Button panel I **/
+        // Button panel I 
 
         panel_Expenses.add(btn_submit_1);
 
-        /** Position button panel I **/
+        // Position button panel I 
 
         btn_submit_1.setBounds(450 , 430 , 100 , 30);
 
 
-        /** Panel INCOME **/
+        // Panel INCOME 
 
-        /** Setting Layout **/
+        // Setting Layout 
         panel_Income.setLayout(null);
 
 
-        /** Set BackGround Color **/
+        // Set BackGround Color 
         Color clr_2 = new Color(204, 255, 153);   // blue
         panel_Income.setBackground(clr_2);
 
 
-        /** Operations for Panel I **/
+        // Operations for Panel I 
 
         btn_submit_1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // To Fill the class Expenses
+                Expenses expenses = new Expenses();
 
-                Date date_picked_1 = cal_expenses.getDate();
-                String str_pay = DateFormat.getInstance().format(date_picked_1);
+                // Frame for Validation actions
 
-                JLabel lbl_test = new JLabel("TEST");
-                panel_Expenses.add(lbl_test);
-                lbl_test.setBounds(20 , 450 , 150 , 30);
+                JFrame frame = new JFrame();
 
-                lbl_test.setText(str_pay);
+                // JDateChooser Test -  Getting date from selected date
+                // If DateChooser was not selected "null
+
+                if (cal_expenses.getDate() == null) {
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "DATE NOT SELECTED.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    Date date_picked_1 = cal_expenses.getDate();
+                    String str_pay = DateFormat.getInstance().format(date_picked_1);
+                    JLabel lbl_test = new JLabel("TEST");
+                    panel_Expenses.add(lbl_test);
+                    lbl_test.setBounds(20 , 450 , 150 , 30);
+
+                    lbl_test.setText(str_pay);
+                }
+
+                // Getting Text from Text Areas
+
+                String st_quantity = txt_quantity.getText();
+
+                if(st_quantity.isEmpty()  || st_quantity.matches("[a-zA-Z_]+")){
+
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "INVALID INPUT.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    int num_quantity = Integer.parseInt(st_quantity);
+                     expenses.setQuantity(num_quantity);
+                }
+
             }
         });
 
-        /** All label for panel II **/
+        // All label for panel II 
 
         panel_Income.add(lbl_date_2);
         panel_Income.add(lbl_user);
         panel_Income.add(lbl_comments_2);
         panel_Income.add(lbl_income);
 
-        /** Position of the labels **/
+        // Position of the labels 
         lbl_date_2.setBounds(20 , 10 , 300 , 30);
         lbl_user.setBounds(40 , 90 , 300 , 30);
         lbl_income.setBounds(200 , 90 , 300 , 30);
         lbl_comments_2.setBounds( 400 , 90 , 300 , 30);
 
-        /** All Text Areas for Panel II **/
+        // All Text Areas for Panel II 
         panel_Income.add(txt_income);
         panel_Income.add(txt_comments_2);
 
 
-        /** Position for Text Area **/
+        // Position for Text Area 
         txt_income.setBounds(180 , 115 , 100 , 30);
         txt_comments_2.setBounds(380 , 115 , 150 , 30 );
 
-        /** ComboBox for panel II **/
+        // ComboBox for panel II 
         panel_Income.add(cmb_user);
 
-        /** Position for ComboBox **/
+        // Position for ComboBox 
         cmb_user.setBounds(20 , 115 , 100 , 30);
 
-        /** Button panel II **/
+        // Button panel II 
 
         panel_Income.add(btn_submit_2);
 
-        /** Position button panel I **/
+        // Position button panel I 
 
         btn_submit_2.setBounds(200 , 230 , 100 , 30);
 
 
-        /** Panel Monthly Expenses **/
+        // Panel Monthly Expenses 
 
-        /** setting layout **/
+        // setting layout 
         panel_Monthly_Expenses.setLayout(null);
 
-        /** Set BackGround Color **/
+        // Set BackGround Color 
         Color clr_3 = new Color(153, 204, 255);   // blue
         panel_Monthly_Expenses.setBackground(clr_3);
 
-        /** All label for panel II **/
+        // All label for panel II 
 
         panel_Monthly_Expenses.add(lbl_date_3);
         panel_Monthly_Expenses.add(lbl_from_3);
@@ -295,7 +321,7 @@ public class PanelView extends JFrame {
         panel_Monthly_Expenses.add(lbl_food_3);
         panel_Monthly_Expenses.add(lbl_total_3);
 
-        /** Position for all labels on panel II **/
+        // Position for all labels on panel II 
 
         lbl_date_3.setBounds(20 ,30 , 300 , 30 );
         lbl_from_3.setBounds(180 , 30 , 300 , 30);
@@ -309,7 +335,7 @@ public class PanelView extends JFrame {
         lbl_food_3.setBounds(40 , 400 , 300 , 30);
         lbl_total_3.setBounds(280 , 400 , 300 , 30);
 
-        /** All text Areas for Panel III **/
+        // All text Areas for Panel III 
 
         panel_Monthly_Expenses.add(txt_hbrt_3);
         panel_Monthly_Expenses.add(txt_hsk_3);
@@ -320,7 +346,7 @@ public class PanelView extends JFrame {
         panel_Monthly_Expenses.add(txt_food_3);
         panel_Monthly_Expenses.add(txt_grand_total);
 
-        /** Position for Text Areas panel III **/
+        // Position for Text Areas panel III 
 
         txt_hbrt_3.setBounds(20, 130 , 100 , 30 );
         txt_hsk_3.setBounds(160 , 130 , 110 , 30 );
@@ -332,16 +358,16 @@ public class PanelView extends JFrame {
         txt_grand_total.setBounds(250 , 430 , 150 , 30 );
 
 
-        /** PANEL QUERIES **/
+        // PANEL QUERIES 
 
-        /** setting layout **/
+        // setting layout 
         panel_Query.setLayout(null);
 
-        /** Set BackGround Color **/
+        // Set BackGround Color 
         Color clr_4 = new Color(141, 249, 235);   // blue
         panel_Query.setBackground(clr_4);
 
-        /** All Labels for Panel IV **/
+        // All Labels for Panel IV 
 
         panel_Query.add(lbl_total_per_month_4);
         panel_Query.add(lbl_from_4);
@@ -349,7 +375,7 @@ public class PanelView extends JFrame {
         panel_Query.add(lbl_on_4);
         panel_Query.add(lbl_query_total_4);
 
-        /** Position for all Labels **/
+        // Position for all Labels 
 
         lbl_total_per_month_4.setBounds(20 , 40 , 300 , 30 );
         lbl_from_4.setBounds(40 , 150 , 300 , 30);
@@ -357,38 +383,38 @@ public class PanelView extends JFrame {
         lbl_on_4.setBounds(40 , 250 , 300 , 30);
         lbl_query_total_4.setBounds (150 , 250 , 300 , 30);
 
-        /** Text Areas for panel IV **/
+        // Text Areas for panel IV 
 
         panel_Query.add(txt_total_per_month_4);
         panel_Query.add(txt_on_4);
         panel_Query.add(txt_query_total_4);
 
-        /** Position for the text Areas **/
+        // Position for the text Areas 
 
         txt_total_per_month_4.setBounds(330 , 70 , 100 , 30);
         txt_on_4.setBounds(20 , 280 , 100 , 30);
         txt_query_total_4.setBounds(300, 280, 150 , 30);
 
-        /** ComboBox for Panel IV **/
+        // ComboBox for Panel IV 
 
         panel_Query.add(cmb_month_4);
 
-        /** Position for ComboBox **/
+        // Position for ComboBox 
 
         cmb_month_4.setBounds(20 , 70 , 120 , 30);
 
-        /** Buttons on Panel IV **/
+        // Buttons on Panel IV 
 
         panel_Query.add(btn_get_4);
         panel_Query.add(btn_total_on_4);
 
-        /** Position button on panel IV **/
+        // Position button on panel IV 
 
         btn_get_4.setBounds(180 , 70, 100 , 30);
         btn_total_on_4.setBounds(150 , 280 , 120 , 30);
 
 
-        /** Adding Panels to the app **/
+        // Adding Panels to the app 
         tabbedPane.add("Expenses",panel_Expenses);
         tabbedPane.add("Income",panel_Income);
         tabbedPane.add("Monthly Exp",panel_Monthly_Expenses);
