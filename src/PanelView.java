@@ -233,15 +233,15 @@ public class PanelView extends JFrame {
                 }
                 else{
                     Date date_picked_1 = cal_expenses.getDate();
-                    String str_pay = DateFormat.getInstance().format(date_picked_1);
+                    String str_day = DateFormat.getInstance().format(date_picked_1);
                     JLabel lbl_test = new JLabel("TEST");
                     panel_Expenses.add(lbl_test);
                     lbl_test.setBounds(20 , 450 , 150 , 30);
 
-                    lbl_test.setText(str_pay);
+                    lbl_test.setText(str_day);
                 }
 
-                // Getting Text from Text Areas
+                // Getting Number from Text Areas Quantity
 
                 String st_quantity = txt_quantity.getText();
 
@@ -258,7 +258,47 @@ public class PanelView extends JFrame {
                      expenses.setQuantity(num_quantity);
                 }
 
-            }
+                // Getting Product from Text Area Product
+
+                String st_product = txt_product.getText();
+
+                if(st_product.isEmpty()  || st_product.matches("[0-9]+")){
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "INVALID INPUT.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+                else {
+                    expenses.setProduct(st_product);
+                }
+
+                //Getting Price fro a text Area Price
+
+                String st_price = txt_price.getText();
+
+                if (st_price.isEmpty() || st_price.matches("[a-zA-Z_]+")){
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "INVALID INPUT.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+                else {
+                    float num_price = Float.parseFloat(st_price);
+                    expenses.setPrice(num_price);
+
+                }
+                // Getting the object from Combobox
+
+                String st_payment = (String) cmb_pay.getSelectedItem();
+                JLabel lbl_test = new JLabel("TEST");
+                panel_Expenses.add(lbl_test);
+                lbl_test.setBounds(20 , 470 , 150 , 30);
+
+                lbl_test.setText(st_payment);
+
+                }
         });
 
         // All label for panel II 
