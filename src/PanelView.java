@@ -170,6 +170,13 @@ public class PanelView extends JFrame {
         txt_price.setBorder(BorderFactory.createLineBorder(Color.black));
         txt_comments.setBorder(BorderFactory.createLineBorder(Color.black));
 
+        //Text Areas new font
+
+        txt_quantity.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+        txt_product.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+        txt_price.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+        txt_comments.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+
         // Adding to the Panel I
         panel_Expenses.add(txt_quantity);
         panel_Expenses.add(txt_product);
@@ -252,6 +259,7 @@ public class PanelView extends JFrame {
                     java.sql.Date sql_date = new  java.sql.Date(util_date.getTime());
                     expenses.setDate(sql_date);
 
+                    // LABEL FOR TESTING
 
                     JLabel lbl_test = new JLabel("TEST");
                     panel_Expenses.add(lbl_test);
