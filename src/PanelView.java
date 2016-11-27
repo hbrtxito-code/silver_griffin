@@ -4,8 +4,11 @@
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.*;
+import java.sql.Date;
 import java.text.DateFormat;
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import javax.swing.*;
 
 
@@ -128,6 +131,8 @@ public class PanelView extends JFrame {
 
     private JTabbedPane tabbedPane = new JTabbedPane();
 
+    private Expense_Service expense_service = new Expense_Service();
+
 
     public PanelView(){
         // Panel  EXPENSES 
@@ -232,8 +237,15 @@ public class PanelView extends JFrame {
                             JOptionPane.WARNING_MESSAGE);
                 }
                 else{
-                    Date date_picked_1 = cal_expenses.getDate();
+                    java.util.Date date_picked_1 = cal_expenses.getDate();
                     String str_day = DateFormat.getInstance().format(date_picked_1);
+
+
+                    java.util.Date util_date = cal_expenses.getDate();
+                    java.sql.Date sql_date = new  java.sql.Date(util_date.getTime());
+                    expenses.setDate(sql_date);
+
+
                     JLabel lbl_test = new JLabel("TEST");
                     panel_Expenses.add(lbl_test);
                     lbl_test.setBounds(20 , 450 , 150 , 30);
@@ -243,7 +255,7 @@ public class PanelView extends JFrame {
 
                 // Getting Number from Text Areas Quantity
 
-                String st_quantity = txt_quantity.getText();
+                String st_quantity = txt_quantity.getText().trim();
 
                 if(st_quantity.isEmpty()  || st_quantity.matches("[a-zA-Z_]+")){
 
@@ -260,7 +272,7 @@ public class PanelView extends JFrame {
 
                 // Getting Product from Text Area Product
 
-                String st_product = txt_product.getText();
+                String st_product = txt_product.getText().trim();
 
                 if(st_product.isEmpty()  || st_product.matches("[0-9]+")){
                     //custom title, warning icon
@@ -273,9 +285,9 @@ public class PanelView extends JFrame {
                     expenses.setProduct(st_product);
                 }
 
-                //Getting Price fro a text Area Price
+                //Getting Price for a text Area Price
 
-                String st_price = txt_price.getText();
+                String st_price = txt_price.getText().trim();
 
                 if (st_price.isEmpty() || st_price.matches("[a-zA-Z_]+")){
                     //custom title, warning icon
@@ -289,14 +301,49 @@ public class PanelView extends JFrame {
                     expenses.setPrice(num_price);
 
                 }
-                // Getting the object from Combobox
+                // Getting the object from Combobox - PAYMENT
 
                 String st_payment = (String) cmb_pay.getSelectedItem();
+                expenses.setPayment(st_payment);
+
+                // TESTING COMBOBOX
                 JLabel lbl_test = new JLabel("TEST");
                 panel_Expenses.add(lbl_test);
                 lbl_test.setBounds(20 , 470 , 150 , 30);
 
                 lbl_test.setText(st_payment);
+
+                // Getting the object from Combobox - Category
+
+                String st_type = (String) cmb_type.getSelectedItem();
+                expenses.setCategory(st_type);
+
+                // Getting TEXT from Text Areas - Comments
+
+                String st_comments = txt_comments.getText().trim();
+
+                if (st_comments.isEmpty()){
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "INVALID INPUT.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+                else {
+                    expenses.setComments(st_comments);
+                }
+
+                //Attempt to Insert into the Database
+
+                if(expense_service.insert(expenses)){
+                    System.out.println("INSERT SUCCESSFUL ");
+                }
+                else{
+                    System.out.println("ERROR  ");
+
+                }
+
+
 
                 }
         });

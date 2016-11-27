@@ -18,7 +18,15 @@ public class Expenses implements Serializable {
     private String payment ;
     private Date date;
     private String comments;
+    private java.sql.Date date_2 ;
 
+    public java.sql.Date getDate_2() {
+        return date_2;
+    }
+
+    public void setDate_2(java.sql.Date date_2) {
+        this.date_2 = date_2;
+    }
 
     public int getId() {
         return id;
