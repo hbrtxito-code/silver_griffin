@@ -4,11 +4,7 @@
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.sql.*;
-import java.sql.Date;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
 import javax.swing.*;
 
 
@@ -49,6 +45,7 @@ public class PanelView extends JFrame {
     // Buttons for panel I //
 
     private JButton btn_submit_1            = new JButton("SUBMIT");
+    private JButton btn_close_1 = new JButton("CLOSE");
 
     // Panel II Components
 
@@ -140,8 +137,9 @@ public class PanelView extends JFrame {
         // setting Layout 
        panel_Expenses.setLayout(null);
 
-        // Set BackGround Color 
-        panel_Expenses.setBackground(Color.lightGray);
+        /// Set BackGround Color
+        Color clr_1 = new Color(204, 204, 255);   // blue
+        panel_Expenses.setBackground(clr_1);
 
         // All label for panel I 
 
@@ -164,8 +162,15 @@ public class PanelView extends JFrame {
         lbl_comments_1.setBounds(430 , 300 , 300 , 30);
 
 
-        // All Text Areas for panel I 
+        // All Text Areas for panel I
 
+        // BORDERS AREAS  - Panel I
+        txt_quantity.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_product.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_price.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_comments.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        // Adding to the Panel I
         panel_Expenses.add(txt_quantity);
         panel_Expenses.add(txt_product);
         panel_Expenses.add(txt_price);
@@ -197,10 +202,12 @@ public class PanelView extends JFrame {
         // Button panel I 
 
         panel_Expenses.add(btn_submit_1);
+        panel_Expenses.add(btn_close_1);
 
         // Position button panel I 
 
-        btn_submit_1.setBounds(450 , 430 , 100 , 30);
+        btn_submit_1.setBounds(330 , 430 , 100 , 30);
+        btn_close_1.setBounds(450 , 430 , 100 , 30);
 
 
         // Panel INCOME 
@@ -267,7 +274,8 @@ public class PanelView extends JFrame {
                 }
                 else{
                     int num_quantity = Integer.parseInt(st_quantity);
-                     expenses.setQuantity(num_quantity);
+                    expenses.setQuantity(num_quantity);
+                    txt_quantity.setText("");
                 }
 
                 // Getting Product from Text Area Product
@@ -283,6 +291,7 @@ public class PanelView extends JFrame {
                 }
                 else {
                     expenses.setProduct(st_product);
+                    txt_product.setText("");
                 }
 
                 //Getting Price for a text Area Price
@@ -299,21 +308,22 @@ public class PanelView extends JFrame {
                 else {
                     float num_price = Float.parseFloat(st_price);
                     expenses.setPrice(num_price);
+                    txt_price.setText("");
 
                 }
-                // Getting the object from Combobox - PAYMENT
+                // Getting the object from ComboBox - PAYMENT
 
                 String st_payment = (String) cmb_pay.getSelectedItem();
                 expenses.setPayment(st_payment);
 
-                // TESTING COMBOBOX
+                // TESTING ComboBox
                 JLabel lbl_test = new JLabel("TEST");
                 panel_Expenses.add(lbl_test);
                 lbl_test.setBounds(20 , 470 , 150 , 30);
 
                 lbl_test.setText(st_payment);
 
-                // Getting the object from Combobox - Category
+                // Getting the object from ComboBox - Category
 
                 String st_type = (String) cmb_type.getSelectedItem();
                 expenses.setCategory(st_type);
@@ -331,6 +341,7 @@ public class PanelView extends JFrame {
                 }
                 else {
                     expenses.setComments(st_comments);
+                    txt_comments.setText("");
                 }
 
                 //Attempt to Insert into the Database
@@ -343,10 +354,12 @@ public class PanelView extends JFrame {
 
                 }
 
-
-
                 }
         });
+
+        // Close App Button
+
+        btn_close_1.addActionListener(e -> this.dispose());
 
         // All label for panel II 
 
