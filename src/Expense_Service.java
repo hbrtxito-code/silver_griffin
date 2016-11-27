@@ -31,7 +31,7 @@ public class Expense_Service implements Serializable {
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
-                System.out.println("A new seller was inserted successfully!");
+                System.out.println("A new Expense was inserted successfully!");
                 return true;
             }
         } catch (SQLException ex) {

@@ -6,8 +6,8 @@ import java.sql.*;
 
 
 public class JdbcHelper {
-
-    final private String dbURL = "jdbc:mysql://localhost:3306/budget_db";
+    // Warning Database OUT
+    final private String dbURL = "jdbc:mysql://localhost:3306/budget_db?autoReconnect=true&useSSL=false";
     final private String username = "root";
     final private String password = "dv9535nr";
     private Connection conn;
