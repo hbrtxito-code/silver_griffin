@@ -4,8 +4,12 @@
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.Date;
 import java.text.DateFormat;
+import java.util.Calendar;
 import javax.swing.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 
 public class PanelView extends JFrame {
@@ -28,6 +32,8 @@ public class PanelView extends JFrame {
     private JLabel lbl_payment              = new JLabel("PAYMENT");
     private JLabel lbl_category             = new JLabel("CATEGORY");
     private JLabel lbl_comments_1           = new JLabel("COMMENTS");
+    private JLabel lbl_statement            = new JLabel();
+
 
     // Text Area - JTextField
 
@@ -242,31 +248,24 @@ public class PanelView extends JFrame {
 
                 // JDateChooser Test -  Getting date from selected date
                 // If DateChooser was not selected "null
-
                 if (cal_expenses.getDate() == null) {
                     //custom title, warning icon
+
+                    java.util.Date today = new java.util.Date();
+                    expenses.setDate(today);
+
                     JOptionPane.showMessageDialog(frame,
-                            "DATE NOT SELECTED.",
+                            "DATE SET AS TODAY.",
                             "BUDGET APPLICATION",
-                            JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.INFORMATION_MESSAGE);
+
                 }
                 else{
-                    java.util.Date date_picked_1 = cal_expenses.getDate();
-                    String str_day = DateFormat.getInstance().format(date_picked_1);
-
-
                     java.util.Date util_date = cal_expenses.getDate();
                     java.sql.Date sql_date = new  java.sql.Date(util_date.getTime());
                     expenses.setDate(sql_date);
 
-                    // LABEL FOR TESTING
-
-                    JLabel lbl_test = new JLabel("TEST");
-                    panel_Expenses.add(lbl_test);
-                    lbl_test.setBounds(20 , 450 , 150 , 30);
-
-                    lbl_test.setText(str_day);
-                }
+                    }
 
                 // Getting Number from Text Areas Quantity
 
@@ -298,7 +297,7 @@ public class PanelView extends JFrame {
                             JOptionPane.WARNING_MESSAGE);
                 }
                 else {
-                    expenses.setProduct(st_product);
+                    expenses.setProduct(st_product.toUpperCase());
                     txt_product.setText("");
                 }
 
@@ -324,14 +323,7 @@ public class PanelView extends JFrame {
                 String st_payment = (String) cmb_pay.getSelectedItem();
                 expenses.setPayment(st_payment);
 
-                // TESTING ComboBox
-                JLabel lbl_test = new JLabel("TEST");
-                panel_Expenses.add(lbl_test);
-                lbl_test.setBounds(20 , 470 , 150 , 30);
-
-                lbl_test.setText(st_payment);
-
-                // Getting the object from ComboBox - Category
+               // Getting the object from ComboBox - Category
 
                 String st_type = (String) cmb_type.getSelectedItem();
                 expenses.setCategory(st_type);
@@ -348,17 +340,29 @@ public class PanelView extends JFrame {
                             JOptionPane.WARNING_MESSAGE);
                 }
                 else {
-                    expenses.setComments(st_comments);
+                    expenses.setComments(st_comments.toUpperCase());
                     txt_comments.setText("");
                 }
 
                 //Attempt to Insert into the Database
+                
+                if (expense_service.insert(expenses)){
+                    // LABEL FOR TESTING
 
-                if(expense_service.insert(expenses)){
+                    panel_Expenses.add(lbl_statement);
+                    lbl_statement.setBounds(20 , 450 , 150 , 70);
+                    lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
+
+
+                    lbl_statement.setText("INSERT SUCCESSFUL");
                     System.out.println("INSERT SUCCESSFUL ");
-                }
-                else{
-                    System.out.println("ERROR  ");
+
+
+                }else {
+                    lbl_statement.setText(" PROGRAM ERROR ");
+                    lbl_statement.setForeground (Color.red);
+                    lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
+
 
                 }
 
