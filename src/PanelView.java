@@ -29,12 +29,12 @@ public class PanelView extends JFrame {
     private JLabel lbl_category             = new JLabel("CATEGORY");
     private JLabel lbl_comments_1           = new JLabel("COMMENTS");
 
-    // Text Area
+    // Text Area - JTextField
 
-    private JTextArea txt_quantity          = new JTextArea();
-    private JTextArea txt_product           = new JTextArea();
-    private JTextArea txt_price             = new JTextArea();
-    private JTextArea txt_comments          = new JTextArea();
+    private JTextField txt_quantity          = new JTextField();
+    private JTextField txt_product           = new JTextField();
+    private JTextField txt_price             = new JTextField();
+    private JTextField txt_comments          = new JTextField();
 
     // Combos
 
