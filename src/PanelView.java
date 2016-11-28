@@ -51,7 +51,7 @@ public class PanelView extends JFrame {
     // Buttons for panel I //
 
     private JButton btn_submit_1            = new JButton("SUBMIT");
-    private JButton btn_close_1 = new JButton("CLOSE");
+    private JButton btn_close_1             = new JButton("CLOSE");
 
     // Panel II Components
 
@@ -540,7 +540,6 @@ public class PanelView extends JFrame {
 
 
         add(tabbedPane);
-
 
     }
 
