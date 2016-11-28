@@ -6,10 +6,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.util.Calendar;
 import javax.swing.*;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 
 
 public class PanelView extends JFrame {
@@ -269,17 +269,20 @@ public class PanelView extends JFrame {
 
                 // Getting Number from Text Areas Quantity
 
+
                 String st_quantity = txt_quantity.getText().trim();
 
                 if(st_quantity.isEmpty()  || st_quantity.matches("[a-zA-Z_]+")){
 
                     //custom title, warning icon
                     JOptionPane.showMessageDialog(frame,
-                            "INVALID INPUT.",
+                            "INVALID QUANTITY.",
                             "BUDGET APPLICATION",
                             JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
                 else{
+
                     int num_quantity = Integer.parseInt(st_quantity);
                     expenses.setQuantity(num_quantity);
                     txt_quantity.setText("");
@@ -292,9 +295,10 @@ public class PanelView extends JFrame {
                 if(st_product.isEmpty()  || st_product.matches("[0-9]+")){
                     //custom title, warning icon
                     JOptionPane.showMessageDialog(frame,
-                            "INVALID INPUT.",
+                            "INVALID PRODUCT.",
                             "BUDGET APPLICATION",
                             JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
                 else {
                     expenses.setProduct(st_product.toUpperCase());
@@ -308,9 +312,10 @@ public class PanelView extends JFrame {
                 if (st_price.isEmpty() || st_price.matches("[a-zA-Z_]+")){
                     //custom title, warning icon
                     JOptionPane.showMessageDialog(frame,
-                            "INVALID INPUT.",
+                            "INVALID PRICE.",
                             "BUDGET APPLICATION",
                             JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
                 else {
                     float num_price = Float.parseFloat(st_price);
@@ -335,9 +340,10 @@ public class PanelView extends JFrame {
                 if (st_comments.isEmpty()){
                     //custom title, warning icon
                     JOptionPane.showMessageDialog(frame,
-                            "INVALID INPUT.",
+                            "ENTER COMMENT.",
                             "BUDGET APPLICATION",
                             JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
                 else {
                     expenses.setComments(st_comments.toUpperCase());
@@ -345,7 +351,7 @@ public class PanelView extends JFrame {
                 }
 
                 //Attempt to Insert into the Database
-                
+
                 if (expense_service.insert(expenses)){
                     // LABEL FOR TESTING
 
