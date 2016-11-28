@@ -285,7 +285,6 @@ public class PanelView extends JFrame {
 
                     int num_quantity = Integer.parseInt(st_quantity);
                     expenses.setQuantity(num_quantity);
-                    txt_quantity.setText("");
                 }
 
                 // Getting Product from Text Area Product
@@ -302,7 +301,7 @@ public class PanelView extends JFrame {
                 }
                 else {
                     expenses.setProduct(st_product.toUpperCase());
-                    txt_product.setText("");
+
                 }
 
                 //Getting Price for a text Area Price
@@ -320,7 +319,7 @@ public class PanelView extends JFrame {
                 else {
                     float num_price = Float.parseFloat(st_price);
                     expenses.setPrice(num_price);
-                    txt_price.setText("");
+
 
                 }
                 // Getting the object from ComboBox - PAYMENT
@@ -358,6 +357,9 @@ public class PanelView extends JFrame {
                     panel_Expenses.add(lbl_statement);
                     lbl_statement.setBounds(20 , 450 , 150 , 70);
                     lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
+                    txt_quantity.setText("");
+                    txt_product.setText("");
+                    txt_price.setText("");
 
 
                     lbl_statement.setText("INSERT SUCCESSFUL");
