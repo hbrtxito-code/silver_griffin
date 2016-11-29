@@ -14,7 +14,7 @@ public class Expense_Service implements Serializable {
     public boolean insert(Expenses expenses) {
 
         try {
-            String sql = "INSERT INTO tbl_expenses (product, category , quantity , price , payment , date , comment) VALUES (?, ? , ? ,? ,? ,?, ?)";
+            String sql = "INSERT INTO tbl_expenses (product, category , store , quantity , price , payment , date , comment) VALUES (?, ? , ? ,? ,? ,?, ?,?)";
 
             JdbcHelper jdbcHelper = new JdbcHelper();
 
@@ -22,12 +22,12 @@ public class Expense_Service implements Serializable {
             PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(sql);
             statement.setString(1, expenses.getProduct());
             statement.setString(2, expenses.getCategory());
-            statement.setInt(3, expenses.getQuantity());
-            statement.setFloat(4, expenses.getPrice());
-            statement.setString(5, expenses.getPayment());
-            statement.setDate(6 , new java.sql.Date(expenses.getDate().getTime()));
-            //statement.setDate(5 , new java.sql.Date(expenses.getDate_2().getTime()));
-            statement.setString(7, expenses.getComments());
+            statement.setString(3 , expenses.getStore());
+            statement.setInt(4, expenses.getQuantity());
+            statement.setFloat(5, expenses.getPrice());
+            statement.setString(6, expenses.getPayment());
+            statement.setDate(7 , new java.sql.Date(expenses.getDate().getTime()));
+            statement.setString(8, expenses.getComments());
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {

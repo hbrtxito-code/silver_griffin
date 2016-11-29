@@ -5,11 +5,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.util.Calendar;
 import javax.swing.*;
-import java.time.*;
 
 
 public class PanelView extends JFrame {
@@ -28,6 +24,7 @@ public class PanelView extends JFrame {
     private JLabel lbl_date_1               = new JLabel("DATE");
     private JLabel lbl_quantity             = new JLabel("QUANTITY");
     private JLabel lbl_product              = new JLabel("PRODUCT");
+    private JLabel lbl_store                = new JLabel("STORE");
     private JLabel lbl_price                = new JLabel("PRICE");
     private JLabel lbl_payment              = new JLabel("PAYMENT");
     private JLabel lbl_category             = new JLabel("CATEGORY");
@@ -43,6 +40,8 @@ public class PanelView extends JFrame {
     private JTextField txt_comments          = new JTextField();
 
     // Combos
+
+    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS", "COTSCO" , "WALMART" , "HYBEE"} );
 
     private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {" CREDIT", " DEBIT" , " CASH"});
 
@@ -153,6 +152,7 @@ public class PanelView extends JFrame {
         panel_Expenses.add(lbl_date_1);
         panel_Expenses.add(lbl_product);
         panel_Expenses.add(lbl_price);
+        panel_Expenses.add(lbl_store);
         panel_Expenses.add(lbl_payment);
         panel_Expenses.add(lbl_category);
         panel_Expenses.add(lbl_comments_1);
@@ -160,9 +160,10 @@ public class PanelView extends JFrame {
 
         // Position of the labels 
         lbl_date_1.setBounds(20 , 10 , 300 , 30);
-        lbl_product.setBounds(220 , 150 , 300 , 30);
+        lbl_product.setBounds(160 , 150 , 300 , 30);
+        lbl_store.setBounds(330 , 150 , 300 ,30);
         lbl_quantity.setBounds(20, 150, 300, 30);
-        lbl_price.setBounds(430 , 150, 300 , 30 );
+        lbl_price.setBounds(460 , 150, 300 , 30 );
         lbl_payment.setBounds(30 , 300 , 300 , 30);
         lbl_category.setBounds(230 , 300 , 300 , 30);
         lbl_comments_1.setBounds(430 , 300 , 300 , 30);
@@ -192,20 +193,27 @@ public class PanelView extends JFrame {
         // Position of the Text Area 
 
         txt_quantity.setBounds(30, 185 , 50 , 30);
-        txt_product.setBounds(180, 185 , 150 , 30);
-        txt_price.setBounds(410 , 185 , 100 , 30);
+        txt_product.setBounds(120, 185 , 150 , 30);
+        txt_price.setBounds(440 , 185 , 100 , 30);
         txt_comments.setBounds(410 , 330 , 150 , 30);
 
         // All ComboBox for Panel I 
 
         panel_Expenses.add(cmb_pay);
         panel_Expenses.add(cmb_type);
+        panel_Expenses.add(cmb_store);
 
 
         // Position for all ComboBox 
 
+        cmb_store.setBounds(300 , 185 , 100 ,30);
         cmb_pay.setBounds(20 , 330 , 100 , 30);
         cmb_type.setBounds(200 , 330 , 125 , 30);
+
+        //Border for JComboBox
+        cmb_store.setBorder(BorderFactory.createLineBorder(Color.black));
+        cmb_pay.setBorder(BorderFactory.createLineBorder(Color.black));
+        cmb_type.setBorder(BorderFactory.createLineBorder(Color.black));
 
         // JCalendar JDate Chooser 
 
@@ -303,6 +311,10 @@ public class PanelView extends JFrame {
                     expenses.setProduct(st_product.toUpperCase());
 
                 }
+                // Getting the object from ComboBox - STORE
+
+                String st_store = (String) cmb_store.getSelectedItem();
+                expenses.setStore(st_store);
 
                 //Getting Price for a text Area Price
 
@@ -417,8 +429,19 @@ public class PanelView extends JFrame {
 
         btn_submit_2.setBounds(200 , 230 , 100 , 30);
 
+        //Income Button Action Listener
 
-        // Panel Monthly Expenses 
+        btn_submit_2.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                // ComboBox User
+            }
+        });
+
+
+        // Panel III - Monthly Expenses
 
         // setting layout 
         panel_Monthly_Expenses.setLayout(null);
