@@ -354,7 +354,7 @@ public class PanelView extends JFrame {
                             "NO COMMENT ADDED.",
                             "BUDGET APPLICATION",
                             JOptionPane.WARNING_MESSAGE);
-                    return;
+                    expenses.setComments("");
                 }
                 else {
                     expenses.setComments(st_comments.toUpperCase());
