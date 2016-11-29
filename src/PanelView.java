@@ -351,7 +351,7 @@ public class PanelView extends JFrame {
                 if (st_comments.isEmpty()){
                     //custom title, warning icon
                     JOptionPane.showMessageDialog(frame,
-                            "ENTER COMMENT.",
+                            "NO COMMENT ADDED.",
                             "BUDGET APPLICATION",
                             JOptionPane.WARNING_MESSAGE);
                     return;
