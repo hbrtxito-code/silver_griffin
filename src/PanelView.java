@@ -4,7 +4,6 @@
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.sql.Date;
 import javax.swing.*;
 
 
@@ -52,6 +51,10 @@ public class PanelView extends JFrame {
     private JButton btn_submit_1            = new JButton("SUBMIT");
     private JButton btn_close_1             = new JButton("CLOSE");
 
+    // JCalendar
+
+    private JDateChooser cal_expenses = new JDateChooser();
+
     // Panel II Components
 
     //  Labels
@@ -63,22 +66,25 @@ public class PanelView extends JFrame {
 
     //  Combos
 
-    private JComboBox cmb_user              = new JComboBox();
+    private JComboBox <String> cmb_user    = new JComboBox<>(new String [] { "HEBERT", "HSIENKAI" , "HOUSE"} );
 
     //  Text Areas 
 
-    private JTextArea txt_income            = new JTextArea();
-    private JTextArea txt_comments_2        = new JTextArea();
+    private JTextField txt_income            = new JTextField();
+    private JTextField txt_comments_2        = new JTextField();
 
-    // JCalendar 
 
-    private JDateChooser cal_expenses = new JDateChooser();
 
     // Button for panel II 
 
     private JButton btn_submit_2            = new JButton("SUBMIT");
 
-    // Panel III Components 
+    // JCalendar
+
+    private JDateChooser cal_income         = new JDateChooser();
+
+    // Panel III Components
+
 
     // Labels Panel III 
 
@@ -410,9 +416,9 @@ public class PanelView extends JFrame {
 
         // Position of the labels 
         lbl_date_2.setBounds(20 , 10 , 300 , 30);
-        lbl_user.setBounds(40 , 90 , 300 , 30);
-        lbl_income.setBounds(200 , 90 , 300 , 30);
-        lbl_comments_2.setBounds( 400 , 90 , 300 , 30);
+        lbl_user.setBounds(40 , 150 , 300 , 30);
+        lbl_income.setBounds(200 , 150 , 300 , 30);
+        lbl_comments_2.setBounds( 400 , 150 , 300 , 30);
 
         // All Text Areas for Panel II 
         panel_Income.add(txt_income);
@@ -420,14 +426,20 @@ public class PanelView extends JFrame {
 
 
         // Position for Text Area 
-        txt_income.setBounds(180 , 115 , 100 , 30);
-        txt_comments_2.setBounds(380 , 115 , 150 , 30 );
+        txt_income.setBounds(180 , 175 , 100 , 30);
+        txt_comments_2.setBounds(380 , 175 , 150 , 30 );
+
+
+        // JCalendar JDate Chooser
+        panel_Income.add(cal_income);
+        cal_income.setBounds(120, 50, 125, 20);
+
 
         // ComboBox for panel II 
         panel_Income.add(cmb_user);
 
         // Position for ComboBox 
-        cmb_user.setBounds(20 , 115 , 100 , 30);
+        cmb_user.setBounds(20 , 175 , 100 , 30);
 
         // Button panel II 
 
@@ -435,16 +447,103 @@ public class PanelView extends JFrame {
 
         // Position button panel I 
 
-        btn_submit_2.setBounds(200 , 230 , 100 , 30);
+        btn_submit_2.setBounds(200 , 250 , 100 , 30);
 
         //Income Button Action Listener
 
         btn_submit_2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Class Income
+                Income income =new Income();
+
+                // Frame for Validation actions
+
+                JFrame frame = new JFrame();
+
+                // JDateChooser Test -  Getting date from selected date
+                // If DateChooser was not selected "null
+                if (cal_income.getDate() == null) {
+                    //custom title, warning icon
+
+                    java.util.Date today = new java.util.Date();
+                    income.setDate(today);
+
+                    JOptionPane.showMessageDialog(frame,
+                            "DATE SET AS TODAY.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.INFORMATION_MESSAGE);
+
+                }
+                else{
+                    java.util.Date util_date = cal_income.getDate();
+                    java.sql.Date sql_date = new  java.sql.Date(util_date.getTime());
+                    income.setDate(sql_date);
+
+                }
+
+                //Getting Income from the Text Area
+
+                String st_income = txt_income.getText().trim();
+
+                if (st_income.isEmpty() || st_income.matches("[a-zA-Z_]+")){
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "INVALID PRICE.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                else {
+                    float num_income = Float.parseFloat(st_income);
+                    income.setAmount(num_income);
+
+                    }
+
+                // Getting the object from ComboBox - USER
+
+                String st_user = (String) cmb_user.getSelectedItem();
+                income.setStr_user(st_user);
+
+                // Getting the object from Comments Box
+
+                String st_comments = txt_comments_2.getText().trim().toUpperCase();
+
+                if (st_comments.isEmpty()){
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "NO COMMENT ADDED.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.WARNING_MESSAGE);
+                    income.setComments("");
+                }
+                else {
+                    income.setComments(st_comments);
+                    txt_comments.setText("");
+                }
+
+                //Attempt to Insert into the Database
+
+                if (expense_service.insert_2(income)){
+                    // LABEL FOR TESTING
+
+                    panel_Expenses.add(lbl_statement);
+                    lbl_statement.setBounds(20 , 450 , 150 , 70);
+                    lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
+                    txt_comments_2.setText("");
+                    txt_income.setText("");
 
 
-                // ComboBox User
+                    lbl_statement.setText("INSERT SUCCESSFUL");
+                    System.out.println("INSERT SUCCESSFUL ");
+
+
+                }else {
+                    lbl_statement.setText(" PROGRAM ERROR ");
+                    lbl_statement.setForeground (Color.red);
+                    lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
+
+                }
             }
         });
 

@@ -1,10 +1,7 @@
 /**
  * Created by hbrtxito on 11/12/16.
  */
-import javax.swing.*;
-import java.awt.*;
-import java.sql.*;
-import java.util.*;
+
 import java.io.Serializable;
 import java.util.Date;
 

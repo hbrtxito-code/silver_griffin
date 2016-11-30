@@ -39,5 +39,29 @@ public class Expense_Service implements Serializable {
         }
         return false;
     }
+    public boolean insert_2(Income income) {
+
+        try {
+            String sql = "INSERT INTO tbl_income (user , income , comments , date ) VALUES (?, ? , ? , ?)";
+
+            jdbcHelper = new JdbcHelper();
+
+
+            PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(sql);
+            statement.setString(1, income.getStr_user());
+            statement.setFloat(2, income.getAmount());
+            statement.setString(3 , income.getComments());
+            statement.setDate(4 , new java.sql.Date(income.getDate().getTime()));
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("A new Income was inserted successfully!");
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
 }
