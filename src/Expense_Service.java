@@ -9,14 +9,14 @@ import java.util.logging.*;
 
 public class Expense_Service implements Serializable {
 
-    public JdbcHelper jdbcHelper = new JdbcHelper();
+    public JdbcHelper jdbcHelper ;
 
     public boolean insert(Expenses expenses) {
 
         try {
             String sql = "INSERT INTO tbl_expenses (product, category , store , quantity , price , payment , date , comment) VALUES (?, ? , ? ,? ,? ,?, ?,?)";
 
-            JdbcHelper jdbcHelper = new JdbcHelper();
+             jdbcHelper = new JdbcHelper();
 
 
             PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(sql);
