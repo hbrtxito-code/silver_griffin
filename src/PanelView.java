@@ -41,7 +41,7 @@ public class PanelView extends JFrame {
 
     // Combos
 
-    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS", "COTSCO" , "WALMART" , "HYBEE"} );
+    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS", "COTSCO" , "WALMART" , "HYBEE" , "RESTAURANT"} );
 
     private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {" CREDIT", " DEBIT" , " CASH"});
 
@@ -160,12 +160,12 @@ public class PanelView extends JFrame {
 
         // Position of the labels 
         lbl_date_1.setBounds(20 , 10 , 300 , 30);
-        lbl_product.setBounds(160 , 150 , 300 , 30);
+        lbl_product.setBounds(160 , 300 , 300 , 30);
         lbl_store.setBounds(330 , 150 , 300 ,30);
-        lbl_quantity.setBounds(20, 150, 300, 30);
-        lbl_price.setBounds(460 , 150, 300 , 30 );
-        lbl_payment.setBounds(30 , 300 , 300 , 30);
-        lbl_category.setBounds(230 , 300 , 300 , 30);
+        lbl_quantity.setBounds(20, 300, 300, 30);
+        lbl_price.setBounds(320 , 300, 300 , 30 );
+        lbl_payment.setBounds(30 , 150 , 300 , 30);
+        lbl_category.setBounds(170 , 150 , 300 , 30);
         lbl_comments_1.setBounds(430 , 300 , 300 , 30);
 
 
@@ -192,9 +192,9 @@ public class PanelView extends JFrame {
 
         // Position of the Text Area 
 
-        txt_quantity.setBounds(30, 185 , 50 , 30);
-        txt_product.setBounds(120, 185 , 150 , 30);
-        txt_price.setBounds(440 , 185 , 100 , 30);
+        txt_quantity.setBounds(30, 330 , 50 , 30);
+        txt_product.setBounds(120, 330 , 150 , 30);
+        txt_price.setBounds(290 , 330 , 100 , 30);
         txt_comments.setBounds(410 , 330 , 150 , 30);
 
         // All ComboBox for Panel I 
@@ -207,8 +207,8 @@ public class PanelView extends JFrame {
         // Position for all ComboBox 
 
         cmb_store.setBounds(300 , 185 , 100 ,30);
-        cmb_pay.setBounds(20 , 330 , 100 , 30);
-        cmb_type.setBounds(200 , 330 , 125 , 30);
+        cmb_pay.setBounds(20 , 185 , 100 , 30);
+        cmb_type.setBounds(150 , 185 , 125 , 30);
 
         //Border for JComboBox
         cmb_store.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -329,8 +329,17 @@ public class PanelView extends JFrame {
                     return;
                 }
                 else {
+                    int num_quantity = Integer.parseInt(st_quantity);
                     float num_price = Float.parseFloat(st_price);
-                    expenses.setPrice(num_price);
+
+                    if (num_quantity>1){
+                        num_price = num_quantity*num_price;
+                        expenses.setPrice(num_price);
+
+                    }else {
+                        num_price = Float.parseFloat(st_price);
+                        expenses.setPrice(num_price);
+                    }
 
 
                 }
@@ -346,7 +355,7 @@ public class PanelView extends JFrame {
 
                 // Getting TEXT from Text Areas - Comments
 
-                String st_comments = txt_comments.getText().trim();
+                String st_comments = txt_comments.getText().trim().toUpperCase();
 
                 if (st_comments.isEmpty()){
                     //custom title, warning icon
@@ -357,7 +366,7 @@ public class PanelView extends JFrame {
                     expenses.setComments("");
                 }
                 else {
-                    expenses.setComments(st_comments.toUpperCase());
+                    expenses.setComments(st_comments);
                     txt_comments.setText("");
                 }
 
@@ -382,7 +391,6 @@ public class PanelView extends JFrame {
                     lbl_statement.setText(" PROGRAM ERROR ");
                     lbl_statement.setForeground (Color.red);
                     lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
-
 
                 }
 
