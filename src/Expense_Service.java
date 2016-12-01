@@ -9,17 +9,20 @@ import java.util.logging.*;
 
 public class Expense_Service implements Serializable {
 
-    public JdbcHelper jdbcHelper ;
+
+
+    protected PreparedStatement statement ;
+
+
 
     public boolean insert(Expenses expenses) {
+        JdbcHelper jdbcHelper = new JdbcHelper();
+
 
         try {
             String sql = "INSERT INTO tbl_expenses (product, category , store , quantity , price , payment , date , comment) VALUES (?, ? , ? ,? ,? ,?, ?,?)";
 
-             jdbcHelper = new JdbcHelper();
-
-
-            PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(sql);
+            statement = jdbcHelper.getConnection().prepareStatement(sql);
             statement.setString(1, expenses.getProduct());
             statement.setString(2, expenses.getCategory());
             statement.setString(3 , expenses.getStore());
@@ -37,14 +40,33 @@ public class Expense_Service implements Serializable {
         } catch (SQLException ex) {
             Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally {
+            //Closing the connection
+            try {
+                if (statement != null) {
+                    statement.close();
+                    jdbcHelper.conn.close();
+                    System.out.println("Connection closed.");
+
+                }
+            }catch (SQLException ex)
+            {Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+            }finally {
+                statement=null;
+                jdbcHelper.conn=null;}
+        }
+
         return false;
     }
+
+
     public boolean insert_2(Income income) {
 
         try {
+
             String sql = "INSERT INTO tbl_income (user , income , comments , date ) VALUES (?, ? , ? , ?)";
 
-            jdbcHelper = new JdbcHelper();
+            JdbcHelper jdbcHelper = new JdbcHelper();
 
 
             PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(sql);
@@ -60,6 +82,15 @@ public class Expense_Service implements Serializable {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            //Closing the connection
+            try{
+                statement.close();
+                if (statement.isClosed())
+                    System.out.println("Connection closed.");}
+            catch (SQLException ex)
+            { Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return false;
     }

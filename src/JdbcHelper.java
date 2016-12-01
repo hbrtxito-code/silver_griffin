@@ -10,7 +10,7 @@ public class JdbcHelper {
     final private String dbURL = "jdbc:mysql://localhost:3306/budget_db?autoReconnect=true&useSSL=false";
     final private String username = "root";
     final private String password = "dv9535nr";
-    private Connection conn;
+    protected Connection conn;
 
     public JdbcHelper() {
         getConnection();
@@ -23,7 +23,9 @@ public class JdbcHelper {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
         return conn;
+
     }
 
     public ResultSet select(String nameTable, String[] columnsList, String condition) {

@@ -4,6 +4,7 @@
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 
@@ -29,7 +30,7 @@ public class PanelView extends JFrame {
     private JLabel lbl_category             = new JLabel("CATEGORY");
     private JLabel lbl_comments_1           = new JLabel("COMMENTS");
     private JLabel lbl_statement            = new JLabel();
-
+    private JLabel lbl_empty_comment        = new JLabel();
 
     // Text Area - JTextField
 
@@ -40,7 +41,7 @@ public class PanelView extends JFrame {
 
     // Combos
 
-    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS", "COTSCO" , "WALMART" , "HYBEE" , "RESTAURANT"} );
+    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS", "COTSCO" ,"MENARDS", "WALMART" , "HYBEE" , "RESTAURANT"} );
 
     private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {" CREDIT", " DEBIT" , " CASH"});
 
@@ -54,6 +55,11 @@ public class PanelView extends JFrame {
     // JCalendar
 
     private JDateChooser cal_expenses = new JDateChooser();
+
+    //public JFrame
+
+    private JFrame frame = new JFrame();
+
 
     // Panel II Components
 
@@ -78,6 +84,7 @@ public class PanelView extends JFrame {
     // Button for panel II 
 
     private JButton btn_submit_2            = new JButton("SUBMIT");
+    private JButton btn_close_2          = new JButton("CLOSE");
 
     // JCalendar
 
@@ -162,6 +169,7 @@ public class PanelView extends JFrame {
         panel_Expenses.add(lbl_payment);
         panel_Expenses.add(lbl_category);
         panel_Expenses.add(lbl_comments_1);
+        panel_Expenses.add(lbl_empty_comment);
 
 
         // Position of the labels 
@@ -173,6 +181,7 @@ public class PanelView extends JFrame {
         lbl_payment.setBounds(30 , 150 , 300 , 30);
         lbl_category.setBounds(170 , 150 , 300 , 30);
         lbl_comments_1.setBounds(430 , 300 , 300 , 30);
+        lbl_empty_comment.setBounds(20 , 430 , 150 , 70);
 
 
         // All Text Areas for panel I
@@ -255,10 +264,6 @@ public class PanelView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // To Fill the class Expenses
                 Expenses expenses = new Expenses();
-
-                // Frame for Validation actions
-
-                JFrame frame = new JFrame();
 
                 // JDateChooser Test -  Getting date from selected date
                 // If DateChooser was not selected "null
@@ -365,10 +370,9 @@ public class PanelView extends JFrame {
 
                 if (st_comments.isEmpty()){
                     //custom title, warning icon
-                    JOptionPane.showMessageDialog(frame,
-                            "NO COMMENT ADDED.",
-                            "BUDGET APPLICATION",
-                            JOptionPane.WARNING_MESSAGE);
+                    lbl_empty_comment.setText("NO COMMENT ADDED");
+
+
                     expenses.setComments("");
                 }
                 else {
@@ -391,6 +395,7 @@ public class PanelView extends JFrame {
 
                     lbl_statement.setText("INSERT SUCCESSFUL");
                     System.out.println("INSERT SUCCESSFUL ");
+                    txt_quantity.requestFocus();
 
 
                 }else {
@@ -405,7 +410,15 @@ public class PanelView extends JFrame {
 
         // Close App Button
 
-        btn_close_1.addActionListener(e -> this.dispose());
+        btn_close_1.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Good Bye ");
+                frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+
+            }
+        });
 
         // All label for panel II 
 
@@ -447,7 +460,15 @@ public class PanelView extends JFrame {
 
         // Position button panel I 
 
-        btn_submit_2.setBounds(200 , 250 , 100 , 30);
+        btn_submit_2.setBounds(430 , 250 , 100 , 30);
+
+        // Button Close for panel II
+
+        panel_Income.add(btn_close_2);
+
+        // Position for Button Close panel II
+
+        btn_close_2.setBounds(300 , 250 , 100 , 30);
 
         //Income Button Action Listener
 
@@ -546,7 +567,9 @@ public class PanelView extends JFrame {
                 }
             }
         });
+        // Close App Button
 
+        btn_close_2.addActionListener(e -> this.dispose());
 
         // Panel III - Monthly Expenses
 
