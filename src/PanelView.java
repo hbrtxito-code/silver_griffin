@@ -31,6 +31,7 @@ public class PanelView extends JFrame {
     private JLabel lbl_comments_1           = new JLabel("COMMENTS");
     private JLabel lbl_statement            = new JLabel();
     private JLabel lbl_empty_comment        = new JLabel();
+    private JLabel lbl_last_entry           = new JLabel();
 
     // Text Area - JTextField
 
@@ -41,7 +42,7 @@ public class PanelView extends JFrame {
 
     // Combos
 
-    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS", "COTSCO" ,"MENARDS", "WALMART" , "HYBEE" , "RESTAURANT"} );
+    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS","BURLINGTON", "COSTCO" ,"MENARDS", "WALMART" , "HYBEE" , "RESTAURANT"} );
 
     private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {" CREDIT", " DEBIT" , " CASH"});
 
@@ -170,6 +171,7 @@ public class PanelView extends JFrame {
         panel_Expenses.add(lbl_category);
         panel_Expenses.add(lbl_comments_1);
         panel_Expenses.add(lbl_empty_comment);
+        panel_Expenses.add(lbl_last_entry);
 
 
         // Position of the labels 
@@ -181,7 +183,8 @@ public class PanelView extends JFrame {
         lbl_payment.setBounds(30 , 150 , 300 , 30);
         lbl_category.setBounds(170 , 150 , 300 , 30);
         lbl_comments_1.setBounds(430 , 300 , 300 , 30);
-        lbl_empty_comment.setBounds(20 , 430 , 150 , 70);
+        lbl_empty_comment.setBounds(20 , 480 , 150 , 70);
+        lbl_last_entry.setBounds(20 , 450 ,480 ,30);
 
 
         // All Text Areas for panel I
@@ -386,8 +389,9 @@ public class PanelView extends JFrame {
                     // LABEL FOR TESTING
 
                     panel_Expenses.add(lbl_statement);
-                    lbl_statement.setBounds(20 , 450 , 150 , 70);
+                    lbl_statement.setBounds(20 , 50 , 150 , 70);
                     lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
+                    lbl_last_entry.setText(expenses.toString());
                     txt_quantity.setText("");
                     txt_product.setText("");
                     txt_price.setText("");
