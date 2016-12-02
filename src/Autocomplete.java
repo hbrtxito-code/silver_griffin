@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +15,8 @@ public class Autocomplete {
 
     public List autocomplete() {
         List<String> product_list = new ArrayList<>();
+        List<String> product_list_unique = new ArrayList<>();
+
 
         ResultSet resultSet;
 
@@ -30,7 +33,15 @@ public class Autocomplete {
 
                 product_list.add(resultSet.getString(1));
 
+
+
             }
+            HashSet<String> uniqueValues = new HashSet<>(product_list);
+
+            for (String value : uniqueValues){
+                product_list_unique.add(value);
+            }
+
 
             System.out.println(product_list.size());
         } catch (SQLException ex)
@@ -55,7 +66,7 @@ public class Autocomplete {
 
 
         }
-        return product_list;
+        return product_list_unique;
 
     }
 }
