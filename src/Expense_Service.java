@@ -9,11 +9,7 @@ import java.util.logging.*;
 
 public class Expense_Service implements Serializable {
 
-
-
     protected PreparedStatement statement ;
-
-
 
     public boolean insert(Expenses expenses) {
         JdbcHelper jdbcHelper = new JdbcHelper();

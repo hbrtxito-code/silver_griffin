@@ -1,14 +1,22 @@
 /**
  * Created by hbrtxito on 11/12/16.
  */
+import com.mxrck.autocompleter.TextAutoCompleter;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 
 public class PanelView extends JFrame {
+
 
     // This are all 4 panels
 
@@ -36,18 +44,25 @@ public class PanelView extends JFrame {
     // Text Area - JTextField
 
     private JTextField txt_quantity          = new JTextField();
-    private JTextField txt_product           = new JTextField();
+    private   JTextField txt_product           = new JTextField();
     private JTextField txt_price             = new JTextField();
     private JTextField txt_comments          = new JTextField();
 
+
+
+
+
+
+
     // Combos
 
-    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS","BURLINGTON", "COSTCO" ,"MENARDS", "WALMART" , "HYBEE" , "RESTAURANT"} );
+    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS","BURLINGTON", "COSTCO" ,
+                                                                "MENARDS", "WALMART" , "HYBEE" , "WALGREENS", "RESTAURANT"} );
 
-    private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {" CREDIT", " DEBIT" , " CASH"});
+    private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {"CREDIT", "DEBIT" , "CASH"});
 
-    private JComboBox <String> cmb_type     = new JComboBox<>(new String[] {" HOUSE", " FIXED" , " FOOD" , " BARNEY",
-                                                                            " HEBERT" , " HSIENKAI", " EXTRA"});
+    private JComboBox <String> cmb_type     = new JComboBox<>(new String[] {"HOUSE", "FIXED" , "FOOD" , "BARNEY",
+                                                                            "HEBERT" , "HSIENKAI", "EXTRA"});
     // Buttons for panel I //
 
     private JButton btn_submit_1            = new JButton("SUBMIT");
@@ -150,7 +165,13 @@ public class PanelView extends JFrame {
     private Expense_Service expense_service = new Expense_Service();
 
 
+
+    TextAutoCompleter textAutoCompleter = new TextAutoCompleter(txt_product);
+
+
     public PanelView(){
+
+        help();
         // Panel  EXPENSES 
 
         // setting Layout 
@@ -184,7 +205,7 @@ public class PanelView extends JFrame {
         lbl_category.setBounds(170 , 150 , 300 , 30);
         lbl_comments_1.setBounds(430 , 300 , 300 , 30);
         lbl_empty_comment.setBounds(20 , 480 , 150 , 70);
-        lbl_last_entry.setBounds(20 , 450 ,480 ,30);
+        lbl_last_entry.setBounds(20 , 460 ,480 ,30);
 
 
         // All Text Areas for panel I
@@ -389,7 +410,7 @@ public class PanelView extends JFrame {
                     // LABEL FOR TESTING
 
                     panel_Expenses.add(lbl_statement);
-                    lbl_statement.setBounds(20 , 50 , 150 , 70);
+                    lbl_statement.setBounds(20 , 550 , 150 , 70);
                     lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
                     lbl_last_entry.setText(expenses.toString());
                     txt_quantity.setText("");
@@ -700,7 +721,24 @@ public class PanelView extends JFrame {
 
         add(tabbedPane);
 
+
+
     }
+    public void help(){
+        Autocomplete operation_1 =  new Autocomplete();
+
+        List<String> product_list = operation_1.autocomplete();
+
+        System.out.println(product_list.size() + " HI");
+
+
+        for (String temp : product_list){
+
+            textAutoCompleter.addItem(temp);
+        }
+
+    }
+
 
 
 }
