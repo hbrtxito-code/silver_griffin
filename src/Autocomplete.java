@@ -45,7 +45,7 @@ public class Autocomplete {
 
             System.out.println(product_list.size());
         } catch (SQLException ex)
-        { Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+        { Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
         }catch(Exception e){
             //Handle errors for Class.forName
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class Autocomplete {
                 if (statement != null)
                     statement.close();
                 }catch (SQLException ex) {
-                Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
                 try {
                     if (jdbcHelper.conn != null)
                     jdbcHelper.conn.close();

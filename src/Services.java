@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.logging.*;
 
 
-public class Expense_Service implements Serializable {
+public class Services implements Serializable {
 
     protected PreparedStatement statement ;
 
@@ -34,7 +34,7 @@ public class Expense_Service implements Serializable {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally {
             //Closing the connection
@@ -46,7 +46,7 @@ public class Expense_Service implements Serializable {
 
                 }
             }catch (SQLException ex)
-            {Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+            {Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
             }finally {
                 statement=null;
                 jdbcHelper.conn=null;}
@@ -77,7 +77,7 @@ public class Expense_Service implements Serializable {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             //Closing the connection
             try{
@@ -85,10 +85,43 @@ public class Expense_Service implements Serializable {
                 if (statement.isClosed())
                     System.out.println("Connection closed.");}
             catch (SQLException ex)
-            { Logger.getLogger(Expense_Service.class.getName()).log(Level.SEVERE, null, ex);
+            { Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return false;
+    }
+
+    public void fill_data(){
+
+        JdbcHelper jdbcHelper = new JdbcHelper();
+        try {
+            String sql = "";
+
+
+            statement = jdbcHelper.getConnection().prepareStatement(sql);
+        }catch (SQLException ex) {
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            //Closing the connection
+            try {
+                if (statement != null) {
+                    statement.close();
+                    jdbcHelper.conn.close();
+                    System.out.println("Connection closed.");
+
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                statement = null;
+                jdbcHelper.conn = null;
+            }
+        }
+
+
+
+
     }
 
 }

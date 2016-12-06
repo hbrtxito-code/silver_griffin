@@ -5,14 +5,16 @@
 import javax.swing.*;
 
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String args[]) { SwingUtilities.invokeLater(new Runnable() {
+        @Override
+        public void run() {
 
-        PanelView tp = new PanelView();
+            new PanelView();
+        }
+    });
 
-        tp.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        tp.setTitle("Budget Application V.01");
-        tp.setSize(600, 600);
-        tp.setVisible(true);
+
+
     }
 
 }

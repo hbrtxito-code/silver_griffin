@@ -1,18 +1,28 @@
 /**
  * Created by hbrtxito on 11/12/16.
  */
-import com.mxrck.autocompleter.TextAutoCompleter;
-import com.toedter.calendar.JDateChooser;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
-import java.util.List;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 
-public class PanelView extends JFrame {
+public class PanelView  {
+    JFrame frame = new JFrame();
+    JTabbedPane tabbedPane = new JTabbedPane();
+    Panel_Expenses fp = new Panel_Expenses();
+    Panel_Income sp = new Panel_Income();
 
+    public PanelView(){
+        tabbedPane.add("EXPENSES PANEL", fp);
+        tabbedPane.add("INCOME PANEL", sp);
+        frame.getContentPane().add(tabbedPane);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(650, 650);
+        frame.setLocationByPlatform(true);
+        frame.setVisible(true);
+    }
+}
 
+/*
     // This are all 4 panels
 
     private JPanel panel_Expenses           = new JPanel();
@@ -21,6 +31,18 @@ public class PanelView extends JFrame {
     private JPanel panel_Query              = new JPanel();
 
     // Panel I Components
+
+    // JTable
+    //headers for the table
+
+    String[] columns = new String[] {"Id", "Name", "Hourly Rate", "Part Time"};
+    Object[][] data = new Object[][] {
+            {1, "John", 40.0, false },
+            {2, "Rambo", 70.0, false },
+            {3, "Zorro", 60.0, true },
+    };
+
+    JTable panel_expense_table              =  new JTable();
 
     // Labels
 
@@ -149,25 +171,33 @@ public class PanelView extends JFrame {
 
     private JTabbedPane tabbedPane = new JTabbedPane();
 
-    private Expense_Service expense_service = new Expense_Service();
+    private Services expense_service = new Services();
 
 
     TextAutoCompleter textAutoCompleter = new TextAutoCompleter(txt_product);
 
 
     public PanelView(){
-
+        // Auto suggester function
         help();
+
+        // ScrollPane
+
+        JScrollPane scrollPane = new JScrollPane(panel_expense_table);
+
+        scrollPane.setBounds(30 ,480 , 450 , 30);
+
+        panel_Expenses.add(scrollPane);
         // Panel  EXPENSES 
 
-        // setting Layout 
+        // setting Layout
        panel_Expenses.setLayout(null);
 
         /// Set BackGround Color
         Color clr_1 = new Color(204, 204, 255);   // blue
         panel_Expenses.setBackground(clr_1);
 
-        // All label for panel I 
+        // All label for panel I
 
         panel_Expenses.add(lbl_quantity);
         panel_Expenses.add(lbl_date_1);
@@ -181,7 +211,7 @@ public class PanelView extends JFrame {
         panel_Expenses.add(lbl_last_entry);
 
 
-        // Position of the labels 
+        // Position of the labels
         lbl_date_1.setBounds(20 , 10 , 300 , 30);
         lbl_product.setBounds(160 , 300 , 300 , 30);
         lbl_store.setBounds(330 , 150 , 300 ,30);
@@ -215,21 +245,21 @@ public class PanelView extends JFrame {
         panel_Expenses.add(txt_price);
         panel_Expenses.add(txt_comments);
 
-        // Position of the Text Area 
+        // Position of the Text Area
 
         txt_quantity.setBounds(30, 330 , 50 , 30);
         txt_product.setBounds(120, 330 , 150 , 30);
         txt_price.setBounds(290 , 330 , 100 , 30);
         txt_comments.setBounds(410 , 330 , 150 , 30);
 
-        // All ComboBox for Panel I 
+        // All ComboBox for Panel I
 
         panel_Expenses.add(cmb_pay);
         panel_Expenses.add(cmb_type);
         panel_Expenses.add(cmb_store);
 
 
-        // Position for all ComboBox 
+        // Position for all ComboBox
 
         cmb_store.setBounds(300 , 185 , 100 ,30);
         cmb_pay.setBounds(20 , 185 , 100 , 30);
@@ -240,17 +270,17 @@ public class PanelView extends JFrame {
         cmb_pay.setBorder(BorderFactory.createLineBorder(Color.black));
         cmb_type.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        // JCalendar JDate Chooser 
+        // JCalendar JDate Chooser
 
         cal_expenses.setBounds(120, 50, 125, 20);
         panel_Expenses.add(cal_expenses);
 
-        // Button panel I 
+        // Button panel I
 
         panel_Expenses.add(btn_submit_1);
         panel_Expenses.add(btn_close_1);
 
-        // Position button panel I 
+        // Position button panel I
 
         btn_submit_1.setBounds(330 , 430 , 100 , 30);
         btn_close_1.setBounds(450 , 430 , 100 , 30);
@@ -723,3 +753,4 @@ public class PanelView extends JFrame {
 
     }
 }
+*/
