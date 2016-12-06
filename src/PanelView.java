@@ -6,12 +6,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 
@@ -48,16 +43,11 @@ public class PanelView extends JFrame {
     private JTextField txt_price             = new JTextField();
     private JTextField txt_comments          = new JTextField();
 
-
-
-
-
-
-
     // Combos
 
-    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"" , "ALDIS","BURLINGTON", "COSTCO" ,
-                                                                "MENARDS", "WALMART" , "HYBEE" , "WALGREENS", "RESTAURANT"} );
+    private JComboBox <String> cmb_store    = new JComboBox<>(new String [] {"OTHERS","CULVERTS" , "ALDIS","BURLINGTON", "COSTCO" , "ASIAN GROCERY",
+                                                                "MENARDS", "WALMART" , "HYBEE" ,"WOODMANS", "WALGREENS",
+                                                                "RESTAURANT" , "PICK'N SAVE"} );
 
     private JComboBox <String> cmb_pay      = new JComboBox<>(new String [] {"CREDIT", "DEBIT" , "CASH"});
 
@@ -76,7 +66,6 @@ public class PanelView extends JFrame {
 
     private JFrame frame = new JFrame();
 
-
     // Panel II Components
 
     //  Labels
@@ -94,8 +83,6 @@ public class PanelView extends JFrame {
 
     private JTextField txt_income            = new JTextField();
     private JTextField txt_comments_2        = new JTextField();
-
-
 
     // Button for panel II 
 
@@ -163,7 +150,6 @@ public class PanelView extends JFrame {
     private JTabbedPane tabbedPane = new JTabbedPane();
 
     private Expense_Service expense_service = new Expense_Service();
-
 
 
     TextAutoCompleter textAutoCompleter = new TextAutoCompleter(txt_product);
@@ -722,7 +708,6 @@ public class PanelView extends JFrame {
         add(tabbedPane);
 
 
-
     }
     public void help(){
         Autocomplete operation_1 =  new Autocomplete();
@@ -731,14 +716,10 @@ public class PanelView extends JFrame {
 
         System.out.println(product_list.size() + " HI");
 
-
         for (String temp : product_list){
 
             textAutoCompleter.addItem(temp);
         }
 
     }
-
-
-
 }
