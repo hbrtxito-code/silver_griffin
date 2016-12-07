@@ -6,7 +6,7 @@ import javax.swing.JTabbedPane;
 
 
 public class PanelView  {
-    JFrame frame = new JFrame();
+    JFrame frame = new JFrame("B U D G E T   A P P L I C A T I O N ");
     JTabbedPane tabbedPane = new JTabbedPane();
     Panel_Expenses fp = new Panel_Expenses();
     Panel_Income sp = new Panel_Income();

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by hbrtxito on 12/6/16.
@@ -35,7 +36,11 @@ public class Panel_Monthly extends JPanel {
         // Set LAYOUT
 
         setLayout(null);
-        // Position for all labels on panel II 
+        // Position for all labels on panel II
+
+        // Set BackGround Color
+        Color clr_3 = new Color(101, 229, 85);   // blue
+        setBackground(clr_3);
 
         lbl_date_3.setBounds(20 ,30 , 300 , 30 );
         lbl_from_3.setBounds(180 , 30 , 300 , 30);

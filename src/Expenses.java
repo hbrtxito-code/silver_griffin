@@ -90,7 +90,7 @@ public class Expenses implements Serializable {
 
     @Override
     public String toString() {
-        return  category + " - " + product + " - " + quantity + " - "
+        return  quantity + " - "  + product + " - " + category + " - " + store + " - "
                 + price + " - " + payment + "-" + date  + " - " + comments ;
     }
 

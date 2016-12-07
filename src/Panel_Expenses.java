@@ -286,12 +286,17 @@ public class Panel_Expenses extends JPanel {
                 //Attempt to Insert into the Database
 
                 if (expense_service.insert(expenses)){
+
+                    Create_File test_c = new Create_File();
+
                     // LABEL FOR TESTING
 
                     add(lbl_statement);
                     lbl_statement.setBounds(20 , 550 , 150 , 70);
                     lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
                     lbl_last_entry.setText(expenses.toString());
+                    test_c.create_File(expenses.toString());
+
                     txt_quantity.setText("");
                     txt_product.setText("");
                     txt_price.setText("");

@@ -94,6 +94,10 @@ public Panel_Income(){
 
         btn_close_2.setBounds(300 , 250 , 100 , 30);
 
+        // Set BackGround Color
+        Color clr_2 = new Color(141, 249, 235);   // blue
+        setBackground(clr_2);
+
         // Expense Service
 
         Services expense_service = new Services();
@@ -199,16 +203,15 @@ public Panel_Income(){
         });
         // Close App Button
 
-    btn_close_2.addActionListener(new AbstractAction() {
+        btn_close_2.addActionListener(new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame();
             System.out.println("Good Bye ");
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-
-        }
-    });
+            }
+            });
     }
 
 
