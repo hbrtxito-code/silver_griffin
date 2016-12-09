@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Calendar;
 
 /**
  * Created by hbrtxito on 12/6/16.
@@ -89,5 +90,20 @@ public class Panel_Monthly extends JPanel {
         txt_extra_3.setBounds(330, 260 , 100 , 30);
         txt_food_3.setBounds(20, 430 , 100 , 30);
         txt_grand_total.setBounds(250 , 430 , 150 , 30 );
+
+        Services services = new Services();
+
+
+        // Date for Results  " + 1 " months start from 0
+
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+
+        int month = Calendar.getInstance().get(Calendar.MONTH);
+
+        // Food Expenses
+        Double test = services.third_panel_results(month+1 , year  , "FOOD");
+
+        txt_food_3.setText(test.toString());
+
     }
 }

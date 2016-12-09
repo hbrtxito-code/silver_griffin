@@ -16,12 +16,12 @@ public class Create_File {
 
     public void create_File(String content) {
 
-        String test = " hola hola hola ";
         String path = "/home/hbrtxito/Downloads/hi.txt";
 
-        String headline = "         B U D G E T   A P P L I CA T I O N  \n" +
+        String headline = "             B U D G E T   A P P L I CA T I O N  \n" +
                 "==========================================================================================="+
-                        "\nDatabase's Back Up - Tex File Version - V.01 \n ";
+                        "\n     Database's Back Up - Tex File Version - V.01 \n " +
+                "\n Quantity  -  Product    - Category  -   Store    -  Price   -   Payment  -  Date  - Comments \n" ;
 
 
         try {

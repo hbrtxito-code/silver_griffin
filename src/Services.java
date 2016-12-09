@@ -124,4 +124,54 @@ public class Services implements Serializable {
 
     }
 
+    public double third_panel_results(int month , int year , String category) {
+
+
+
+
+        JdbcHelper jdbcHelper = new JdbcHelper();
+
+        double total_test =0 ;
+
+        try {
+            // Query to fin out how much is spent on a month by categories
+            String query = "Select sum(price) from tbl_expenses where   year(date)="+ year + " and month(date)=" + month
+                            + " and category= \"" + category+ "\"";
+            System.out.println(query);
+
+            PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(query);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                total_test = result.getDouble(1);
+                System.out.println(total_test);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+
+        }
+        finally {
+            try {
+            if (statement != null) {
+                statement.close();
+                jdbcHelper.conn.close();
+                System.out.println("Connection closed.");
+
+            }
+                    }catch (SQLException ex){
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+            }finally {
+                        statement=null;
+                        jdbcHelper.conn=null;
+
+        }
+
+        }
+        return  total_test;
+
+    }
+
 }
