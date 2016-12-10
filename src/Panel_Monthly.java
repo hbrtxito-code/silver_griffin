@@ -3,6 +3,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 
@@ -43,6 +44,8 @@ public class Panel_Monthly extends JPanel {
     // JButton
 
     private JButton btn_submit_3                = new JButton("SUBMIT");
+    private JButton btn_close_3                 = new JButton("CLOSE");
+
 
     public Panel_Monthly(){
 
@@ -89,6 +92,8 @@ public class Panel_Monthly extends JPanel {
         add(txt_extra_3);
         add(txt_food_3);
 
+        //
+
         // Position for Text Areas panel III 
 
         txt_hbrt_3.setBounds(70, 210 , 100 , 30 );
@@ -121,9 +126,11 @@ public class Panel_Monthly extends JPanel {
 
         //JButton Submit
         add(btn_submit_3);
+        add(btn_close_3);
 
         //Position JButton
         btn_submit_3.setBounds(400 , 75 ,100 , 30);
+        btn_close_3.setBounds(420 , 450 , 100 , 30);
 
         // Services
          Services services = new Services();
@@ -144,7 +151,7 @@ public class Panel_Monthly extends JPanel {
                             "DATE NO SELECTED.",
                             "BUDGET APPLICATION",
                             JOptionPane.INFORMATION_MESSAGE);
-                    return;
+                    return ;
 
                 }
                 else{
@@ -194,6 +201,17 @@ public class Panel_Monthly extends JPanel {
                 }
 
 
+
+            }
+        });
+
+        btn_close_3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFrame frame = new JFrame();
+                System.out.println("Good Bye");
+                frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 
             }
         });
