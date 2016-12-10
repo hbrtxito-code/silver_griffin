@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -94,6 +95,15 @@ public class Panel_Query extends JPanel{
 
         btn_get_4.setBounds(180 , 70, 100 , 30);
         btn_total_on_4.setBounds(150 , 280 , 120 , 30);
+
+
+        // Date for Results  " + 1 " months start from 0
+
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+
+        int month = Calendar.getInstance().get(Calendar.MONTH);
+
+
 
     }
 

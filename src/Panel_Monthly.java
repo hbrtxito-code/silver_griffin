@@ -1,6 +1,12 @@
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.Calendar;
+import java.awt.event.ActionEvent;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by hbrtxito on 12/6/16.
@@ -9,7 +15,7 @@ public class Panel_Monthly extends JPanel {
 
     // Labels Panel III
 
-    private JLabel lbl_date_3               = new JLabel("CALENDAR DATE");
+    private JLabel lbl_date_3               = new JLabel("DATE");
     private JLabel lbl_from_3               = new JLabel("FROM");
     private JLabel lbl_to_3                 = new JLabel("TO");
     private JLabel lbl_hsk_3                = new JLabel("HSIENKAI");
@@ -19,7 +25,6 @@ public class Panel_Monthly extends JPanel {
     private JLabel lbl_house_3              = new JLabel("HOUSE");
     private JLabel lbl_extra_3              = new JLabel("EXTRA");
     private JLabel lbl_food_3               = new JLabel("FOOD");
-    private JLabel lbl_total_3              = new JLabel("GRAND TOTAL");
 
     // Text Areas for Panel III
 
@@ -30,7 +35,16 @@ public class Panel_Monthly extends JPanel {
     private JTextArea txt_house_3           = new JTextArea();
     private JTextArea txt_extra_3           = new JTextArea();
     private JTextArea txt_food_3            = new JTextArea();
-    private JTextArea txt_grand_total       = new JTextArea();
+
+    //JComboBox for month Selection
+
+    private JDateChooser cal_monthly_start  = new JDateChooser();
+
+    private JDateChooser cal_monthly_end    = new JDateChooser();
+
+    // JButton
+
+    private JButton btn_submit_3                = new JButton("SUBMIT");
 
     public Panel_Monthly(){
 
@@ -43,17 +57,16 @@ public class Panel_Monthly extends JPanel {
         Color clr_3 = new Color(101, 229, 85);   // blue
         setBackground(clr_3);
 
-        lbl_date_3.setBounds(20 ,30 , 300 , 30 );
-        lbl_from_3.setBounds(180 , 30 , 300 , 30);
-        lbl_to_3.setBounds(320 , 30 , 300 , 30);
-        lbl_hbrt_3.setBounds(40 , 100 , 300 , 30);
-        lbl_hsk_3.setBounds(180 , 100 , 300 , 30 );
-        lbl_barney.setBounds(350 , 100 , 300 , 30);
-        lbl_fix_3.setBounds(40 , 230 , 300 , 30 );
-        lbl_house_3.setBounds(180 , 230 , 300 , 30);
-        lbl_extra_3.setBounds(350, 230 , 300 , 30);
-        lbl_food_3.setBounds(40 , 400 , 300 , 30);
-        lbl_total_3.setBounds(280 , 400 , 300 , 30);
+        lbl_date_3.setBounds(20 ,20 , 300 , 30 );
+        lbl_from_3.setBounds(20 , 75 , 300 , 30);
+        lbl_to_3.setBounds(220 , 75 , 300 , 30);
+        lbl_hbrt_3.setBounds(90 , 180 , 300 , 30);
+        lbl_hsk_3.setBounds(245 , 180 , 300 , 30 );
+        lbl_barney.setBounds(400 , 180 , 300 , 30);
+        lbl_fix_3.setBounds(90 , 290 , 300 , 30 );
+        lbl_house_3.setBounds(245 , 290 , 300 , 30);
+        lbl_extra_3.setBounds(410, 290 , 300 , 30);
+        lbl_food_3.setBounds(90 , 400 , 300 , 30);
 
         // All label for panel III
 
@@ -67,7 +80,6 @@ public class Panel_Monthly extends JPanel {
         add(lbl_house_3);
         add(lbl_extra_3);
         add(lbl_food_3);
-        add(lbl_total_3);
 
         // All text Areas for Panel III 
 
@@ -78,32 +90,117 @@ public class Panel_Monthly extends JPanel {
         add(txt_house_3);
         add(txt_extra_3);
         add(txt_food_3);
-        add(txt_grand_total);
 
         // Position for Text Areas panel III 
 
-        txt_hbrt_3.setBounds(20, 130 , 100 , 30 );
-        txt_hsk_3.setBounds(160 , 130 , 110 , 30 );
-        txt_barney_3.setBounds(330 , 130 , 100, 30);
-        txt_fix_3.setBounds(20 , 260 , 100 , 30 );
-        txt_house_3.setBounds(160 ,260 , 100 , 30);
-        txt_extra_3.setBounds(330, 260 , 100 , 30);
-        txt_food_3.setBounds(20, 430 , 100 , 30);
-        txt_grand_total.setBounds(250 , 430 , 150 , 30 );
+        txt_hbrt_3.setBounds(70, 210 , 100 , 30 );
+        txt_hsk_3.setBounds(220 , 210 , 110 , 30 );
+        txt_barney_3.setBounds(380 , 210 , 100, 30);
+        txt_fix_3.setBounds(70 , 320 , 100 , 30 );
+        txt_house_3.setBounds(220 ,320 , 100 , 30);
+        txt_extra_3.setBounds(380, 320 , 100 , 30);
+        txt_food_3.setBounds(70, 430 , 100 , 30);
 
-        Services services = new Services();
+        //Set Borders
+
+        txt_hbrt_3.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_hsk_3.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_barney_3.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_barney_3.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_fix_3.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_house_3.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_extra_3.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_food_3.setBorder(BorderFactory.createLineBorder(Color.black));
 
 
-        // Date for Results  " + 1 " months start from 0
+        // JComboBox added
+        add(cal_monthly_start);
+        add(cal_monthly_end);
 
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        //JComboBox Position
+        cal_monthly_start.setBounds(80 , 80 , 100 , 20);
+        cal_monthly_end.setBounds(250 , 80 , 100 , 20);
 
-        int month = Calendar.getInstance().get(Calendar.MONTH);
+        //JButton Submit
+        add(btn_submit_3);
 
-        // Food Expenses
-        Double test = services.third_panel_results(month+1 , year  , "FOOD");
+        //Position JButton
+        btn_submit_3.setBounds(400 , 75 ,100 , 30);
 
-        txt_food_3.setText(test.toString());
+        // Services
+         Services services = new Services();
+
+
+        btn_submit_3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //JFrame
+
+                JFrame frame = new JFrame();
+
+                // JDateChooser Test -  Getting date from selected date
+                // If DateChooser was not selected "null
+                if (cal_monthly_start.getDate() == null || cal_monthly_end.getDate()==null) {
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "DATE NO SELECTED.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    return;
+
+                }
+                else{
+                    //Getting Start Date
+                    Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    String start_date = formatter.format(cal_monthly_start.getDate());
+                    System.out.println(start_date);
+
+                    //Getting end date
+                    String end_date = formatter.format(cal_monthly_end.getDate());
+                    System.out.println(end_date);
+
+                    //Food Expenses
+
+                    Double hbrt_expenses = services.third_panel_results(start_date , end_date ,"HEBERT" );
+                    txt_hbrt_3.setText(hbrt_expenses.toString());
+
+                    // Hsienkai Expenses
+
+                    Double hsk_expenses = services.third_panel_results(start_date , end_date ,"HSIENKAI" );
+                    txt_hsk_3.setText(hsk_expenses.toString());
+
+                    // Barney Expenses
+
+                    Double barney_expenses = services.third_panel_results(start_date , end_date ,"BARNEY" );
+                    txt_barney_3.setText(barney_expenses.toString());
+
+                    // Utilites Expenses
+
+                    Double fix_expenses = services.third_panel_results(start_date , end_date ,"FIXED" );
+                    txt_fix_3.setText(fix_expenses.toString());
+
+                    // House Expenses
+
+                    Double house_expenses = services.third_panel_results(start_date , end_date ,"HOUSE" );
+                    txt_house_3.setText(house_expenses.toString());
+
+                    // EXTRA Expenses
+
+                    Double extra_expenses = services.third_panel_results(start_date , end_date ,"EXTRA" );
+                    txt_extra_3.setText(extra_expenses.toString());
+
+                    // FOOD Expenses
+
+                    Double food_expenses = services.third_panel_results(start_date , end_date ,"FOOD" );
+                    txt_food_3.setText(food_expenses.toString());
+                }
+
+
+
+            }
+        });
+
+
 
     }
 }

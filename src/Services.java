@@ -124,7 +124,7 @@ public class Services implements Serializable {
 
     }
 
-    public double third_panel_results(int month , int year , String category) {
+    public double third_panel_results(String start, String end , String category) {
 
 
 
@@ -135,8 +135,8 @@ public class Services implements Serializable {
 
         try {
             // Query to fin out how much is spent on a month by categories
-            String query = "Select sum(price) from tbl_expenses where   year(date)="+ year + " and month(date)=" + month
-                            + " and category= \"" + category+ "\"";
+            String query = "Select sum(price) from tbl_expenses where  date>=\""+ start + "\" and date<=\"" + end
+                            + "\" and category= \"" + category+ "\"";
             System.out.println(query);
 
             PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(query);
