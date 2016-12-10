@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
-import javax.swing.JFrame;
 
 /**
  * Created by hbrtxito on 12/6/16.

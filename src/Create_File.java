@@ -5,13 +5,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Create_File {
-    Expenses expenses = new Expenses();
-    List<String> data_to_file = new ArrayList<>();
+
 
 
     public void create_File(String content) {

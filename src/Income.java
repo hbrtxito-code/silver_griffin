@@ -5,19 +5,12 @@ import java.util.Date;
  */
 public class Income {
 
-    private int id;
     private String str_user;
     private float amount;
     private String comments;
     private Date date;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getStr_user() {
         return str_user;
@@ -53,6 +46,6 @@ public class Income {
 
     @Override
     public String toString() {
-        return " ID= " + id + "  User = " + str_user + " Income = " + amount + " Date = " + date  + " Comments =" + comments ;
+        return "  User = " + str_user + " Income = " + amount + " Date = " + date  + " Comments =" + comments ;
     }
 }

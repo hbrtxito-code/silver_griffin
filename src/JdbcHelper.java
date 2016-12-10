@@ -7,17 +7,17 @@ import java.sql.*;
 
 public class JdbcHelper {
     // Warning Database OUT
-    final private String dbURL = "jdbc:mysql://localhost:3306/budget_db?autoReconnect=true&useSSL=false";
-    final private String username = "root";
-    final private String password = "dv9535nr";
+    private final  String dbURL = "jdbc:mysql://localhost:3306/budget_db?autoReconnect=true&useSSL=false";
+    private final  String username = "root";
+    private final  String password = "dv9535nr";
     protected Connection conn;
 
     public JdbcHelper() {
         getConnection();
     }
 
-    public Connection getConnection(){
-        try{
+    public Connection getConnection() {
+        try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(dbURL, username, password);
         } catch (Exception ex) {
@@ -28,7 +28,7 @@ public class JdbcHelper {
 
     }
 
-    public ResultSet select(String nameTable, String[] columnsList, String condition) {
+ /*   public ResultSet select(String nameTable, String[] columnsList, String condition) {
 
         try {
             String sql = "SELECT ";
@@ -91,4 +91,5 @@ public class JdbcHelper {
         return password;
     }
 
+}*/
 }

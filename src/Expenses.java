@@ -7,7 +7,6 @@ import java.util.Date;
 
 public class Expenses implements Serializable {
 
-    private int id;
     private String category;
     private String product ;
     private int quantity ;
@@ -20,13 +19,7 @@ public class Expenses implements Serializable {
     private String comments;
     private String store;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getCategory() {
         return category;
