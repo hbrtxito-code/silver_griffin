@@ -3,6 +3,8 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.*;
 
@@ -28,8 +30,10 @@ public class Panel_Query extends JPanel{
     private JTextArea txt_query_total_4     = new JTextArea();
 
     // Combo Box for Panel IV
+    String[] months = {"January", "February", "March", "April", "May", "June", "July",
+                    "August", "September", "October", "November", "December"};
 
-    private JComboBox cmb_month_4           = new JComboBox();
+    private JComboBox cmb_month_4           = new JComboBox(months);
 
     // Button for panel IV
 
@@ -41,8 +45,8 @@ public class Panel_Query extends JPanel{
 
     // JDateChooser
 
-    private JDateChooser date_start         = new JDateChooser();
-    private JDateChooser date_end           = new JDateChooser();
+    private JDateChooser cal_date_start     = new JDateChooser();
+    private JDateChooser cal_date_end       = new JDateChooser();
 
 
 
@@ -106,20 +110,36 @@ public class Panel_Query extends JPanel{
 
         // Adding JDateChooser
 
-        add(date_start);
-        add(date_end);
+        add(cal_date_start);
+        add(cal_date_end);
 
         // Position JDateChooser
 
-        date_start.setBounds(150 , 250  , 100 , 20);
-        date_end.setBounds(420 , 250 , 100 , 20);
+        cal_date_start.setBounds(150 , 250  , 100 , 20);
+        cal_date_end.setBounds(420 , 250 , 100 , 20);
 
-        // Date for Results  " + 1 " months start from 0
-
+        // to get the current year
         int year = Calendar.getInstance().get(Calendar.YEAR);
 
-        int month = Calendar.getInstance().get(Calendar.MONTH);
+        //Service
 
+        Services services = new Services();
+
+
+        btn_get_4.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                //Getting the index of a month "+1"
+                int num_month = (cmb_month_4.getSelectedIndex()+1);
+                System.out.println(num_month);
+
+                Double total_per_month =  services.fourth_panel_results(num_month , year);
+
+                txt_total_per_month_4.setText(total_per_month.toString());
+
+            }
+        });
 
         btn_close_4.addActionListener(new AbstractAction() {
             @Override
@@ -130,6 +150,59 @@ public class Panel_Query extends JPanel{
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
+
+        btn_total_on_4.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //JFrame
+
+                JFrame frame = new JFrame();
+
+                if (cal_date_start.getDate() == null || cal_date_end.getDate()==null ) {
+
+                    //custom title, warning icon
+                    JOptionPane.showMessageDialog(frame,
+                            "DATE NO SELECTED.",
+                            "BUDGET APPLICATION",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    return ;
+
+                }
+                else {
+                    String st_on = txt_on_4.getText().trim();
+
+                    if (st_on.isEmpty() || st_on.matches("[0-9]+")){
+                        //custom title, warning icon
+                        JOptionPane.showMessageDialog(frame,
+                                "INVALID PRODUCT.",
+                                "BUDGET APPLICATION",
+                                JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    else {
+
+                        //Getting Start Date
+                        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        String start_date = formatter.format(cal_date_start.getDate());
+                        System.out.println(start_date);
+
+                        //Getting end date
+                        String end_date = formatter.format(cal_date_end.getDate());
+                        System.out.println(end_date);
+
+                        Double total_on = services.fourth_panel_results_on(start_date ,end_date ,st_on ) ;
+                        txt_query_total_4.setText(total_on.toString());
+
+                    }
+
+                }
+
+            }
+        });
     }
 
 }
+
+
+
+

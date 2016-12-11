@@ -126,9 +126,6 @@ public class Services implements Serializable {
 
     public double third_panel_results(String start, String end , String category) {
 
-
-
-
         JdbcHelper jdbcHelper = new JdbcHelper();
 
         double total_test =0 ;
@@ -168,6 +165,98 @@ public class Services implements Serializable {
                         jdbcHelper.conn=null;
 
         }
+
+        }
+        return  total_test;
+
+    }
+
+    public double fourth_panel_results(int month , int year ) {
+
+        JdbcHelper jdbcHelper = new JdbcHelper();
+
+        double total_test =0 ;
+
+        try {
+            // Query to fin out how much is spent on a month by categories
+            String query = "Select sum(price) from tbl_expenses where  month(date)=" + month + " and year(date)="+ year;
+            System.out.println(query);
+
+            PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(query);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                total_test = result.getDouble(1);
+                System.out.println(total_test);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+
+        }
+        finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                    jdbcHelper.conn.close();
+                    System.out.println("Connection closed.");
+
+                }
+            }catch (SQLException ex){
+                Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+            }finally {
+                statement=null;
+                jdbcHelper.conn=null;
+
+            }
+
+        }
+        return  total_test;
+
+    }
+    public double fourth_panel_results_on(String start , String end , String product ) {
+
+        JdbcHelper jdbcHelper = new JdbcHelper();
+
+        double total_test =0 ;
+
+        try {
+            // Query to fin out how much is spent on a month by categories
+            String query = "Select sum(price) from tbl_expenses where date>=\"" + start + "\" and date<=\""+ end
+                    + "\" and product like \"" + product + "%\"";
+            System.out.println(query);
+
+            PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(query);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                total_test = result.getDouble(1);
+                System.out.println(total_test);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+
+        }
+        finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                    jdbcHelper.conn.close();
+                    System.out.println("Connection closed.");
+
+                }
+            }catch (SQLException ex){
+                Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+            }finally {
+                statement=null;
+                jdbcHelper.conn=null;
+
+            }
 
         }
         return  total_test;
