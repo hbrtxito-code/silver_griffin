@@ -3,6 +3,11 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.*;
 
@@ -63,7 +68,7 @@ public class Panel_Expenses extends JPanel {
         setLayout(null);
 
         /// Set BackGround Color
-        Color clr_1 = new Color(204, 204, 255);   // blue
+        Color clr_1 = new Color(51, 133, 255);   // blue
         setBackground(clr_1);
 
         // All label for panel I 
@@ -170,21 +175,49 @@ public class Panel_Expenses extends JPanel {
                 // JDateChooser Test -  Getting date from selected date
                 // If DateChooser was not selected "null
                 if (cal_expenses.getDate() == null) {
-                    //custom title, warning icon
 
-                    java.util.Date today = new java.util.Date();
-                    expenses.setDate(today);
+                    //custom title, warning icon
 
                     JOptionPane.showMessageDialog(frame,
                             "DATE SET AS TODAY.",
                             "BUDGET APPLICATION",
                             JOptionPane.INFORMATION_MESSAGE);
 
+
+                    try {
+                        java.util.Date today = new java.util.Date();
+
+                        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        String start_date = formatter.format(today);
+                        System.out.println(start_date);
+                        Date day = formatter.parse(start_date);
+                        java.sql.Date date = new java.sql.Date(day.getTime());
+
+
+                        expenses.setDate(date);
+
+                    } catch (ParseException exp) {
+                    exp.printStackTrace();
+                    }
+
+
                 }
                 else{
-                    java.util.Date util_date = cal_expenses.getDate();
-                    java.sql.Date sql_date = new  java.sql.Date(util_date.getTime());
-                    expenses.setDate(sql_date);
+
+                    try {
+
+                        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        String start_date = formatter.format(cal_expenses.getDate());
+                        System.out.println(start_date);
+                        Date day = formatter.parse(start_date);
+                        java.sql.Date date = new java.sql.Date(day.getTime());
+
+                        expenses.setDate(date);
+
+                    } catch (ParseException exp) {
+                        exp.printStackTrace();
+                    }
+
 
                 }
 

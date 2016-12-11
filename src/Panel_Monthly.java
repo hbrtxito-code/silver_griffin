@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by hbrtxito on 12/6/16.
@@ -45,6 +47,8 @@ public class Panel_Monthly extends JPanel {
 
     private JButton btn_submit_3                = new JButton("SUBMIT");
     private JButton btn_close_3                 = new JButton("CLOSE");
+    private JButton btn_clear_3                 = new JButton("CLEAR");
+
 
 
     public Panel_Monthly(){
@@ -109,7 +113,6 @@ public class Panel_Monthly extends JPanel {
         txt_hbrt_3.setBorder(BorderFactory.createLineBorder(Color.black));
         txt_hsk_3.setBorder(BorderFactory.createLineBorder(Color.black));
         txt_barney_3.setBorder(BorderFactory.createLineBorder(Color.black));
-        txt_barney_3.setBorder(BorderFactory.createLineBorder(Color.black));
         txt_fix_3.setBorder(BorderFactory.createLineBorder(Color.black));
         txt_house_3.setBorder(BorderFactory.createLineBorder(Color.black));
         txt_extra_3.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -127,13 +130,28 @@ public class Panel_Monthly extends JPanel {
         //JButton Submit
         add(btn_submit_3);
         add(btn_close_3);
+        add(btn_clear_3);
 
         //Position JButton
         btn_submit_3.setBounds(400 , 75 ,100 , 30);
-        btn_close_3.setBounds(420 , 450 , 100 , 30);
+        btn_close_3.setBounds(420 , 480 , 100 , 30);
+        btn_clear_3.setBounds(300 , 480 , 100 , 30);
 
         // Services
          Services services = new Services();
+
+         btn_clear_3.addActionListener(new AbstractAction() {
+             @Override
+             public void actionPerformed(ActionEvent actionEvent) {
+                 txt_food_3.setText("");
+                 txt_extra_3.setText("");
+                 txt_house_3.setText("");
+                 txt_hbrt_3.setText("");
+                 txt_fix_3.setText("");
+                 txt_barney_3.setText("");
+                 txt_hsk_3.setText("");
+             }
+         });
 
 
         btn_submit_3.addActionListener(new AbstractAction() {
@@ -145,7 +163,7 @@ public class Panel_Monthly extends JPanel {
 
                 // JDateChooser Test -  Getting date from selected date
                 // If DateChooser was not selected "null
-                if (cal_monthly_start.getDate() == null || cal_monthly_end.getDate()==null) {
+                if (cal_monthly_start.getDate() == null ) {
                     //custom title, warning icon
                     JOptionPane.showMessageDialog(frame,
                             "DATE NO SELECTED.",
@@ -154,52 +172,64 @@ public class Panel_Monthly extends JPanel {
                     return ;
 
                 }
-                else{
-                    //Getting Start Date
-                    Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-                    String start_date = formatter.format(cal_monthly_start.getDate());
-                    System.out.println(start_date);
+                else {
 
-                    //Getting end date
-                    String end_date = formatter.format(cal_monthly_end.getDate());
-                    System.out.println(end_date);
 
-                    //Food Expenses
+                        //Getting Start Date
+                        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        String start_date = formatter.format(cal_monthly_start.getDate());
+                        System.out.println(start_date);
 
-                    Double hbrt_expenses = services.third_panel_results(start_date , end_date ,"HEBERT" );
-                    txt_hbrt_3.setText(hbrt_expenses.toString());
+                        String end_date ;
 
-                    // Hsienkai Expenses
+                        if (cal_monthly_end.getDate()==null){
 
-                    Double hsk_expenses = services.third_panel_results(start_date , end_date ,"HSIENKAI" );
-                    txt_hsk_3.setText(hsk_expenses.toString());
+                            Date date = new Date();
+                            end_date = formatter.format(date);
+                        }else{
 
-                    // Barney Expenses
+                            end_date =formatter.format(cal_monthly_end.getDate());
 
-                    Double barney_expenses = services.third_panel_results(start_date , end_date ,"BARNEY" );
-                    txt_barney_3.setText(barney_expenses.toString());
+                        }
 
-                    // Utilites Expenses
+                        //Getting end date
+                        System.out.println(end_date);
 
-                    Double fix_expenses = services.third_panel_results(start_date , end_date ,"FIXED" );
-                    txt_fix_3.setText(fix_expenses.toString());
+                        //Food Expenses
 
-                    // House Expenses
+                        Double hbrt_expenses = services.third_panel_results(start_date, end_date, "HEBERT");
+                        txt_hbrt_3.setText(hbrt_expenses.toString());
 
-                    Double house_expenses = services.third_panel_results(start_date , end_date ,"HOUSE" );
-                    txt_house_3.setText(house_expenses.toString());
+                        // Hsienkai Expenses
 
-                    // EXTRA Expenses
+                        Double hsk_expenses = services.third_panel_results(start_date, end_date, "HSIENKAI");
+                        txt_hsk_3.setText(hsk_expenses.toString());
 
-                    Double extra_expenses = services.third_panel_results(start_date , end_date ,"EXTRA" );
-                    txt_extra_3.setText(extra_expenses.toString());
+                        // Barney Expenses
 
-                    // FOOD Expenses
+                        Double barney_expenses = services.third_panel_results(start_date, end_date, "BARNEY");
+                        txt_barney_3.setText(barney_expenses.toString());
 
-                    Double food_expenses = services.third_panel_results(start_date , end_date ,"FOOD" );
-                    txt_food_3.setText(food_expenses.toString());
-                }
+                        // Utilites Expenses
 
+                        Double fix_expenses = services.third_panel_results(start_date, end_date, "FIXED");
+                        txt_fix_3.setText(fix_expenses.toString());
+
+                        // House Expenses
+
+                        Double house_expenses = services.third_panel_results(start_date, end_date, "HOUSE");
+                        txt_house_3.setText(house_expenses.toString());
+
+                        // EXTRA Expenses
+
+                        Double extra_expenses = services.third_panel_results(start_date, end_date, "EXTRA");
+                        txt_extra_3.setText(extra_expenses.toString());
+
+                        // FOOD Expenses
+
+                        Double food_expenses = services.third_panel_results(start_date, end_date, "FOOD");
+                        txt_food_3.setText(food_expenses.toString());
+                    }
 
 
             }

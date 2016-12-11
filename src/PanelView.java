@@ -1,8 +1,7 @@
 /**
  * Created by hbrtxito on 11/12/16.
  */
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 
 public class PanelView  {
@@ -23,6 +22,7 @@ public class PanelView  {
         frame.setSize(650, 650);
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
+        SwingUtilities.updateComponentTreeUI(frame);
     }
 }
 

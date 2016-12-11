@@ -30,8 +30,8 @@ public class Panel_Query extends JPanel{
     private JTextArea txt_query_total_4     = new JTextArea();
 
     // Combo Box for Panel IV
-    String[] months = {"January", "February", "March", "April", "May", "June", "July",
-                    "August", "September", "October", "November", "December"};
+    String[] months = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY",
+                    "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"};
 
     private JComboBox cmb_month_4           = new JComboBox(months);
 
@@ -87,6 +87,13 @@ public class Panel_Query extends JPanel{
         txt_total_per_month_4.setBounds(420 , 70 , 100 , 30);
         txt_on_4.setBounds(150 , 340 , 100 , 30);
         txt_query_total_4.setBounds(420, 340, 100 , 30);
+
+        //Borders
+
+        txt_total_per_month_4.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_on_4.setBorder(BorderFactory.createLineBorder(Color.black));
+        txt_query_total_4.setBorder(BorderFactory.createLineBorder(Color.black));
+
 
         // ComboBox for Panel IV
 
