@@ -1,3 +1,4 @@
+import com.mxrck.autocompleter.TextAutoCompleter;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.*;
@@ -5,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.*;
 import javax.swing.*;
 
 /**
@@ -25,9 +26,9 @@ public class Panel_Query extends JPanel{
 
     // Text Areas Panel IV
 
-    private JTextArea txt_total_per_month_4 = new JTextArea();
-    private JTextArea txt_on_4              = new JTextArea();
-    private JTextArea txt_query_total_4     = new JTextArea();
+    private JTextField txt_total_per_month_4 = new JTextField();
+    private JTextField txt_on_4              = new JTextField();
+    private JTextField txt_query_total_4     = new JTextField();
 
     // Combo Box for Panel IV
     String[] months = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY",
@@ -48,9 +49,15 @@ public class Panel_Query extends JPanel{
     private JDateChooser cal_date_start     = new JDateChooser();
     private JDateChooser cal_date_end       = new JDateChooser();
 
+    //Auto Suggest Box for products
 
+    private TextAutoCompleter textAutoCompleter = new TextAutoCompleter(txt_on_4);
 
     public Panel_Query(){
+
+        help();
+
+
         // PANEL QUERIES
 
         // setting layout
@@ -206,6 +213,20 @@ public class Panel_Query extends JPanel{
 
             }
         });
+    }
+
+    public void help() {
+        Autocomplete operation_1 = new Autocomplete();
+
+        java.util.List<String> product_list = operation_1.autocomplete();
+
+        System.out.println(product_list.size() + " HI");
+
+        for (String temp : product_list) {
+
+            textAutoCompleter.addItem(temp);
+        }
+
     }
 
 }

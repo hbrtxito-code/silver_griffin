@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.text.DateFormat;
-import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -366,7 +365,7 @@ public class Panel_Expenses extends JPanel {
     }
 
 
-    public void help() {
+    protected void help() {
         Autocomplete operation_1 = new Autocomplete();
 
         List<String> product_list = operation_1.autocomplete();
