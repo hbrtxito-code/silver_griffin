@@ -215,7 +215,7 @@ public class Panel_Query extends JPanel{
         });
     }
 
-    public void help() {
+    private void help() {
         Autocomplete operation_1 = new Autocomplete();
 
         java.util.List<String> product_list = operation_1.autocomplete();

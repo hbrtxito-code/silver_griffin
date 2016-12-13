@@ -46,6 +46,6 @@ public class Income {
 
     @Override
     public String toString() {
-        return "  User = " + str_user + " Income = " + amount + " Date = " + date  + " Comments =" + comments ;
+        return  "\'"+ date +"\' , \"" + str_user + "\" , " + amount + " , " + "\"" + comments + "\" )" ;
     }
 }

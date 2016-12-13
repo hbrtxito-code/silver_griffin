@@ -318,15 +318,15 @@ public class Panel_Expenses extends JPanel {
 
                 if (expense_service.insert(expenses)){
 
-                    Create_File test_c = new Create_File();
+                    Create_File expense_file = new Create_File();
 
                     // LABEL FOR TESTING
 
                     add(lbl_statement);
-                    lbl_statement.setBounds(20 , 550 , 150 , 70);
+                    lbl_statement.setBounds(20 , 530 , 150 , 70);
                     lbl_statement.setFont(new Font("Serif", Font.BOLD, 14));
                     lbl_last_entry.setText(expenses.toString());
-                    test_c.create_File(expenses.toString());
+                    expense_file.create_File(expenses.toString());
 
                     txt_quantity.setText("");
                     txt_product.setText("");
@@ -365,7 +365,7 @@ public class Panel_Expenses extends JPanel {
     }
 
 
-    protected void help() {
+    private void help() {
         Autocomplete operation_1 = new Autocomplete();
 
         List<String> product_list = operation_1.autocomplete();

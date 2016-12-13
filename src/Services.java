@@ -58,11 +58,12 @@ public class Services implements Serializable {
 
     public boolean insert_2(Income income) {
 
+        JdbcHelper jdbcHelper = new JdbcHelper();
+
         try {
 
             String sql = "INSERT INTO tbl_income (user , income , comments , date ) VALUES (?, ? , ? , ?)";
 
-            JdbcHelper jdbcHelper = new JdbcHelper();
 
 
             PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(sql);
@@ -81,9 +82,10 @@ public class Services implements Serializable {
         }finally {
             //Closing the connection
             try{
-                statement.close();
-                if (statement.isClosed())
-                    System.out.println("Connection closed.");}
+                if (statement != null){
+                    statement.isClosed();
+                    jdbcHelper.conn.close();
+                    System.out.println("Connection closed.");}}
             catch (SQLException ex)
             { Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
             }

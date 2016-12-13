@@ -63,7 +63,7 @@ public Panel_Income(){
 
         // Position for Text Area
         txt_income.setBounds(180 , 175 , 100 , 30);
-        txt_comments_2.setBounds(380 , 175 , 150 , 30 );
+        txt_comments_2.setBounds(330 , 175 , 150 , 30 );
 
 
         // JCalendar JDate Chooser
@@ -83,7 +83,7 @@ public Panel_Income(){
 
         // Position button panel I
 
-        btn_submit_2.setBounds(430 , 250 , 100 , 30);
+        btn_submit_2.setBounds(300 , 270 , 100 , 30);
 
         // Button Close for panel II
 
@@ -91,7 +91,7 @@ public Panel_Income(){
 
         // Position for Button Close panel II
 
-        btn_close_2.setBounds(300 , 250 , 100 , 30);
+        btn_close_2.setBounds(420 , 270 , 100 , 30);
 
         // Set BackGround Color
         Color clr_2 = new Color(141, 249, 235);   // blue
@@ -179,6 +179,10 @@ public Panel_Income(){
                 //Attempt to Insert into the Database
 
                 if (expense_service.insert_2(income)){
+
+                    Create_File income_file = new Create_File();
+
+                    income_file.create_File_2(income.toString());
                     // LABEL FOR TESTING
 
                     add(lbl_statement);
