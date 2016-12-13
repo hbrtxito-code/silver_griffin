@@ -91,19 +91,29 @@ public class Services implements Serializable {
         return false;
     }
 
-    public void fill_data(){
+    public int max_id() {
 
         JdbcHelper jdbcHelper = new JdbcHelper();
+
+        int max_product_id=0;
+
         try {
-            String sql = "";
+            String sql = "select max(productID) from tbl_expenses ;";
 
+            PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(sql);
 
-            statement = jdbcHelper.getConnection().prepareStatement(sql);
-        }catch (SQLException ex) {
-            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally {
-            //Closing the connection
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                max_product_id = result.getInt(1);
+                System.out.println(max_product_id);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+
+        } finally {
             try {
                 if (statement != null) {
                     statement.close();
@@ -116,11 +126,11 @@ public class Services implements Serializable {
             } finally {
                 statement = null;
                 jdbcHelper.conn = null;
+
             }
+
         }
-
-
-
+        return max_product_id;
 
     }
 

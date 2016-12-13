@@ -83,8 +83,8 @@ public class Expenses implements Serializable {
 
     @Override
     public String toString() {
-        return  quantity + " - "  + product + " - " + category + " - " + store + " - "
-                + price + " - " + payment + "-" + date  + " - " + comments ;
+        return  "\""+ product + "\"  ,  \""  + category + "\"  ,  \""  +  store + "\"  ,  "  +  quantity +" , "
+                + price + " ,  \"" + payment + "\"  , \'" + date  + "\' , \"" + comments + "\" )";
     }
 
 }

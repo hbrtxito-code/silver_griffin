@@ -4,10 +4,19 @@
     <option name="SCOPE_TYPE" value="8" />
     <option name="CUSTOM_SCOPE_NAME" value="Module 'Budget_App'" />
   </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Budget_App:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="64324545-7230-4cdc-b50d-44912f785a92" name="Default" comment="-Done">
+    <list default="true" id="64324545-7230-4cdc-b50d-44912f785a92" name="Default" comment="-Added ID for text file ( values Format for database)&#10;-DONE">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Budget_App_jar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Panel_Expenses.java" afterPath="$PROJECT_DIR$/src/Panel_Expenses.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Create_File.java" afterPath="$PROJECT_DIR$/src/Create_File.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Expenses.java" afterPath="$PROJECT_DIR$/src/Expenses.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Services.java" afterPath="$PROJECT_DIR$/src/Services.java" />
     </list>
     <ignored path="Budget_App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,9 +43,26 @@
       <file leaf-file-name="Services.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Services.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2340">
-              <caret line="227" column="63" lean-forward="false" selection-start-line="227" selection-start-column="63" selection-end-line="227" selection-end-column="63" />
+            <state relative-caret-position="126">
+              <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JdbcHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JdbcHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="20" column="65" lean-forward="true" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+              <folding>
+                <marker date="1481409318015" expanded="false" signature="2098:2109" ph=" { " />
+                <marker date="1481409318015" expanded="false" signature="2122:2128" ph=" }" />
+                <marker date="1481409318015" expanded="false" signature="2161:2172" ph=" { " />
+                <marker date="1481409318015" expanded="false" signature="2188:2194" ph=" }" />
+                <marker date="1481409318015" expanded="false" signature="2227:2238" ph=" { " />
+                <marker date="1481409318015" expanded="false" signature="2254:2260" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,18 +70,21 @@
       <file leaf-file-name="Panel_Income.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Panel_Income.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3600">
+            <state relative-caret-position="708">
               <caret line="204" column="7" lean-forward="false" selection-start-line="204" selection-start-column="7" selection-end-line="212" selection-end-column="15" />
-              <folding />
+              <folding>
+                <element signature="e#6198#6565#0" expanded="true" />
+                <element signature="e#6564#6565#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Panel_Expenses.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Panel_Expenses.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Panel_Expenses.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="371" column="36" lean-forward="false" selection-start-line="371" selection-start-column="36" selection-end-line="371" selection-end-column="36" />
+            <state relative-caret-position="186">
+              <caret line="346" column="17" lean-forward="false" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -78,7 +107,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2916">
               <caret line="171" column="20" lean-forward="false" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="20" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,8 +117,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="342">
+              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -96,13 +127,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Create_File.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Create_File.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Create_File.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+            <state relative-caret-position="167">
+              <caret line="41" column="26" lean-forward="false" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Expenses.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Expenses.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="86" column="96" lean-forward="false" selection-start-line="86" selection-start-column="96" selection-end-line="86" selection-end-column="96" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -157,16 +200,16 @@
         <option value="$PROJECT_DIR$/src/FirstPanel.java" />
         <option value="$PROJECT_DIR$/src/SecondPanel.java" />
         <option value="$PROJECT_DIR$/src/Panel_Income.java" />
-        <option value="$PROJECT_DIR$/src/Expenses.java" />
         <option value="$PROJECT_DIR$/src/Income.java" />
         <option value="$PROJECT_DIR$/src/JdbcHelper.java" />
-        <option value="$PROJECT_DIR$/src/Services.java" />
-        <option value="$PROJECT_DIR$/src/Create_File.java" />
         <option value="$PROJECT_DIR$/src/Panel_Monthly.java" />
         <option value="$PROJECT_DIR$/src/PanelView.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Panel_Query.java" />
         <option value="$PROJECT_DIR$/src/Panel_Expenses.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Services.java" />
+        <option value="$PROJECT_DIR$/src/Expenses.java" />
+        <option value="$PROJECT_DIR$/src/Create_File.java" />
       </list>
     </option>
   </component>
@@ -197,7 +240,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -228,10 +270,11 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/weblaf-complete-1.29.jar!/" />
@@ -735,7 +778,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481444175234</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="-Done">
+      <created>1481496650275</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1481496650275</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -751,13 +801,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3196005" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30836454" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4075" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -818,7 +868,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- Set JCalendar  to its position&#10;- Acction Performed Added for the Calendar" />
     <MESSAGE value="- Set JCalendar  to its position&#10;- Acction Performed Added for the Calendar&#10;- 56 Warning Needs to be checked" />
     <MESSAGE value="- JdateChooser Validate &#10;- Quantity TextArea Validate &#10;-" />
     <MESSAGE value="- JdateChooser Validate &#10;- Quantity TextArea Validate &#10;- NEXT : setting the variable for the resto of the Text Fields" />
@@ -843,17 +892,12 @@
     <MESSAGE value="- Panel III done &#10;- Start Date - End Date added (JdateChooser)&#10;- Panel IV Next" />
     <MESSAGE value="- Panel III done &#10;- Start Date - End Date added (JdateChooser)&#10;-Layout Done &#10;-Close Button added&#10;- Panel IV Next" />
     <MESSAGE value="-Done" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Done" />
+    <MESSAGE value="-Added ID for text file ( values Format for database)&#10;-DONE" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added ID for text file ( values Format for database)&#10;-DONE" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Services.java</url>
-          <line>126</line>
-          <properties class="Services" method="third_panel_results" />
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/PanelView.java</url>
           <line>12</line>
@@ -1146,31 +1190,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JdbcHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-358">
-          <caret line="20" column="65" lean-forward="true" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
-          <folding>
-            <element signature="e#377#378#0" expanded="false" />
-            <element signature="e#408#409#0" expanded="false" />
-            <marker date="1481409318015" expanded="false" signature="2098:2109" ph=" { " />
-            <marker date="1481409318015" expanded="false" signature="2122:2128" ph=" }" />
-            <marker date="1481409318015" expanded="false" signature="2161:2172" ph=" { " />
-            <marker date="1481409318015" expanded="false" signature="2188:2194" ph=" }" />
-            <marker date="1481409318015" expanded="false" signature="2227:2238" ph=" { " />
-            <marker date="1481409318015" expanded="false" signature="2254:2260" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Expenses.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Autocomplete.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1187,38 +1206,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Panel_Income.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3600">
-          <caret line="204" column="7" lean-forward="false" selection-start-line="204" selection-start-column="7" selection-end-line="212" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/PgsLookAndFeel-1.1.2.zip!/README.md" />
-    <entry file="file://$PROJECT_DIR$/src/Create_File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Panel_Monthly.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2916">
           <caret line="171" column="20" lean-forward="false" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Panel_Query.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="33" column="75" lean-forward="false" selection-start-line="33" selection-start-column="75" selection-end-line="33" selection-end-column="75" />
+        <state relative-caret-position="342">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -1234,30 +1238,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/JdbcHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="18">
+          <caret line="20" column="65" lean-forward="true" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+          <folding>
+            <marker date="1481409318015" expanded="false" signature="2098:2109" ph=" { " />
+            <marker date="1481409318015" expanded="false" signature="2122:2128" ph=" }" />
+            <marker date="1481409318015" expanded="false" signature="2161:2172" ph=" { " />
+            <marker date="1481409318015" expanded="false" signature="2188:2194" ph=" }" />
+            <marker date="1481409318015" expanded="false" signature="2227:2238" ph=" { " />
+            <marker date="1481409318015" expanded="false" signature="2254:2260" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Panel_Expenses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="346" column="17" lean-forward="false" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Panel_Income.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="204" column="7" lean-forward="false" selection-start-line="204" selection-start-column="7" selection-end-line="212" selection-end-column="15" />
+          <folding>
+            <element signature="e#6198#6565#0" expanded="true" />
+            <element signature="e#6564#6565#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Panel_Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="33" column="75" lean-forward="false" selection-start-line="33" selection-start-column="75" selection-end-line="33" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Expenses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="86" column="96" lean-forward="false" selection-start-line="86" selection-start-column="96" selection-end-line="86" selection-end-column="96" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Services.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="227" column="63" lean-forward="false" selection-start-line="227" selection-start-column="63" selection-end-line="227" selection-end-column="63" />
+        <state relative-caret-position="126">
+          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Panel_Expenses.java">
+    <entry file="file://$PROJECT_DIR$/src/Create_File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="371" column="36" lean-forward="false" selection-start-line="371" selection-start-column="36" selection-end-line="371" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="167">
+          <caret line="41" column="26" lean-forward="false" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1267,10 +1316,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Budget_App:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

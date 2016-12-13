@@ -9,9 +9,15 @@ import java.io.IOException;
 
 public class Create_File {
 
+    private Services services = new Services();
 
 
     public void create_File(String content) {
+
+        int product_id =0;
+
+
+
 
 
         String headline = "             B U D G E T   A P P L I CA T I O N  \n" +
@@ -39,6 +45,8 @@ public class Create_File {
                 // if file doesn't exists, then create it
                 if (!file.exists() ) {
                     //file.createNewFile();
+                     product_id = 1;
+
                     System.out.println("file created");
                     FileWriter writer = new FileWriter(file);
                     BufferedWriter bw = new BufferedWriter(writer);
@@ -48,18 +56,20 @@ public class Create_File {
                 }
                 FileWriter writer = new FileWriter(file, true);
                 BufferedWriter bw = new BufferedWriter(writer);
-                bw.write("\n"+ content);
+                bw.write("\n"+ "("+ product_id + " , " +content);
                 bw.close();
             }catch(IOException ex){
                 ex.printStackTrace();
             }
 
         }else {
+             product_id = services.max_id();
+
             System.out.println("The directory is already on the computer");
             try {
                 FileWriter writer = new FileWriter(file, true);
                 BufferedWriter bw = new BufferedWriter(writer);
-                bw.write("\n"+ content);
+                bw.write("\n"+ "("+ product_id + " , " +content);
                 bw.close();
             }catch(IOException ex){
             ex.printStackTrace();

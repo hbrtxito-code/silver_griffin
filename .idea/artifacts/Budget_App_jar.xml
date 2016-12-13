@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Budget_App:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Budget_App_jar</output-path>
+    <root id="archive" name="Budget_App.jar">
+      <element id="module-output" name="Budget_App" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/JTattooDemo/JTattooDemo.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-5.1.40-bin.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/AutoCompleter.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
