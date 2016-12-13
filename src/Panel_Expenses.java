@@ -40,7 +40,7 @@ public class Panel_Expenses extends JPanel {
     // Combos
 
     private JComboBox<String> cmb_store = new JComboBox<>(new String[]{"OTHERS", "CULVERTS", "ALDIS", "BURLINGTON",
-            "COSTCO","ASIAN GROCERY", "MENARDS", "WALMART", "HYBEE", "WOODMANS", "WALGREENS",
+            "COSTCO","ASIAN GROCERY", "MENARDS", "WALMART", "HYVEE", "WOODMANS", "WALGREENS",
              "PICK'N SAVE"});
 
     private JComboBox<String> cmb_pay = new JComboBox<>(new String[]{"CREDIT", "DEBIT", "CASH"});

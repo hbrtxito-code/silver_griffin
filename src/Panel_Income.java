@@ -54,7 +54,7 @@ public Panel_Income(){
         lbl_date_2.setBounds(20 , 10 , 300 , 30);
         lbl_user.setBounds(40 , 150 , 300 , 30);
         lbl_income.setBounds(200 , 150 , 300 , 30);
-        lbl_comments_2.setBounds( 400 , 150 , 300 , 30);
+        lbl_comments_2.setBounds( 360 , 150 , 300 , 30);
 
         // All Text Areas for Panel II
         add(txt_income);
