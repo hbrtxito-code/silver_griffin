@@ -1,4 +1,5 @@
 import com.mxrck.autocompleter.TextAutoCompleter;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * Created by hbrtxito on 12/6/16.
@@ -19,7 +21,7 @@ public class Panel_Expenses extends JPanel {
     // Labels
 
     private JLabel lbl_date_1 = new JLabel("DATE");
-    private JLabel lbl_quantity = new JLabel("QUANTITY");
+    private JLabel lbl_quantity = new JLabel("QTY");
     private JLabel lbl_product = new JLabel("PRODUCT");
     private JLabel lbl_store = new JLabel("STORE");
     private JLabel lbl_price = new JLabel("PRICE");
@@ -58,7 +60,24 @@ public class Panel_Expenses extends JPanel {
 
     private TextAutoCompleter textAutoCompleter = new TextAutoCompleter(txt_product);
 
+    // Expenses Service
+
+    Services expense_service = new Services();
+
+
+    // Jtable
+
+    JTable table = new JTable();
+
+    DefaultTableModel tableModel ;
+
     public Panel_Expenses(){
+
+        //jtable
+
+         tableModel = expense_service.fill_data("Select * from tbl_expenses");
+         table.setModel(tableModel);
+
 
         // Auto suggester function
         help();
@@ -84,17 +103,17 @@ public class Panel_Expenses extends JPanel {
         add(lbl_last_entry);
 
 
-        // Position of the labels 
+        // Position of the labels
         lbl_date_1.setBounds(20 , 10 , 300 , 30);
-        lbl_product.setBounds(160 , 300 , 300 , 30);
-        lbl_store.setBounds(330 , 150 , 300 ,30);
-        lbl_quantity.setBounds(20, 300, 300, 30);
-        lbl_price.setBounds(320 , 300, 300 , 30 );
-        lbl_payment.setBounds(30 , 150 , 300 , 30);
-        lbl_category.setBounds(170 , 150 , 300 , 30);
-        lbl_comments_1.setBounds(430 , 300 , 300 , 30);
-        lbl_empty_comment.setBounds(20 , 480 , 150 , 70);
-        lbl_last_entry.setBounds(20 , 460 ,480 ,30);
+        lbl_product.setBounds(330 , 150 , 300 , 30);
+        lbl_store.setBounds(70 , 355 , 300 ,30);
+        lbl_quantity.setBounds(255, 150, 300, 30);
+        lbl_price.setBounds(320 , 255, 300 , 30 );
+        lbl_payment.setBounds(50 , 150 , 300 , 30);
+        lbl_category.setBounds(50 , 255 , 300 , 30);
+        lbl_comments_1.setBounds(300 , 355 , 300 , 30);
+       lbl_empty_comment.setBounds(20 , 500 , 150 , 70);
+        lbl_last_entry.setBounds(20 , 520 ,480 ,30);
 
 
         // All Text Areas for panel I
@@ -120,10 +139,10 @@ public class Panel_Expenses extends JPanel {
 
         // Position of the Text Area 
 
-        txt_quantity.setBounds(30, 330 , 50 , 30);
-        txt_product.setBounds(120, 330 , 150 , 30);
-        txt_price.setBounds(290 , 330 , 100 , 30);
-        txt_comments.setBounds(410 , 330 , 150 , 30);
+        txt_quantity.setBounds(250, 185 , 40 , 30);
+        txt_product.setBounds(300, 185 , 150 , 30);
+        txt_price.setBounds(250 , 285 , 200 , 30);
+        txt_comments.setBounds(250 , 385 , 200 , 30);
 
         // All ComboBox for Panel I 
 
@@ -134,9 +153,9 @@ public class Panel_Expenses extends JPanel {
 
         // Position for all ComboBox 
 
-        cmb_store.setBounds(300 , 185 , 100 ,30);
-        cmb_pay.setBounds(20 , 185 , 100 , 30);
-        cmb_type.setBounds(150 , 185 , 125 , 30);
+        cmb_store.setBounds(30 , 385 , 125 ,30);
+        cmb_pay.setBounds(30 , 185 , 125 , 30);
+        cmb_type.setBounds(30 , 285 , 125 , 30);
 
         //Border for JComboBox
         cmb_store.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -155,13 +174,20 @@ public class Panel_Expenses extends JPanel {
 
         // Position button panel I 
 
-        btn_submit_1.setBounds(330 , 430 , 100 , 30);
-        btn_close_1.setBounds(450 , 430 , 100 , 30);
+        btn_submit_1.setBounds(220 , 480 , 100 , 30);
+        btn_close_1.setBounds(350 , 480 , 100 , 30);
 
 
-        // Expenses Service
+        // Jtable Database
+        JScrollPane jsp = new JScrollPane(table);
 
-        Services expense_service = new Services();
+        add(jsp);
+
+
+        jsp.setBounds(550 , 55, 630 ,450);
+
+
+
 
         btn_submit_1.addActionListener(new AbstractAction() {
             @Override
@@ -378,4 +404,5 @@ public class Panel_Expenses extends JPanel {
         }
 
     }
+
 }

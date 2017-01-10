@@ -19,7 +19,7 @@ public class PanelView  {
         tabbedPane.add("PANEL QUERY" , qp);
         frame.getContentPane().add(tabbedPane);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(650, 650);
+        frame.setSize(1250, 650);
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
         SwingUtilities.updateComponentTreeUI(frame);

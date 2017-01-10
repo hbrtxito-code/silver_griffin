@@ -2,12 +2,17 @@
  * Created by hbrtxito on 11/20/16.
  */
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.io.Serializable;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.*;
 
 
 public class Services implements Serializable {
+
 
     protected PreparedStatement statement ;
 
@@ -275,4 +280,63 @@ public class Services implements Serializable {
 
     }
 
+    public DefaultTableModel fill_data(String query){
+
+        JdbcHelper jdbcHelper = new JdbcHelper();
+
+        DefaultTableModel model = new DefaultTableModel();
+        try {
+
+
+            PreparedStatement statement = jdbcHelper.getConnection().prepareStatement(query);
+
+            ResultSet result = statement.executeQuery();
+
+            ResultSetMetaData rsMD = result.getMetaData();
+
+            int column =rsMD.getColumnCount();
+
+            Object[] object = new Object[column];
+
+            for (int i=0; i<column ; i++){
+                object[i] = rsMD.getColumnLabel(i+1);
+            }
+
+            model.setColumnIdentifiers(object);
+
+            while (result.next()){
+                Object[] data_file = new Object[model.getColumnCount()];
+
+                for (int i=0 ; i<model.getColumnCount() ;i++){
+                    data_file[i] = result.getObject(i+1);
+                }
+                model.addRow(data_file);
+            }
+
+    }catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+
+        }
+        finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                    jdbcHelper.conn.close();
+                    System.out.println("Connection closed.");
+
+                }
+            }catch (SQLException ex){
+                Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+            }finally {
+                statement=null;
+                jdbcHelper.conn=null;
+
+            }
+
+        }
+        return  model;
+
+
+
+    }
 }
